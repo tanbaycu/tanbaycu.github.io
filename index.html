@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vườn mai Chín tèo</title>
+    <link ref="icon" href="favicon.ico">
+</head>
+
+<body>
+    <header>
+
+        <div class="header-content">
+            <img src="logo.png" alt="Website Logo" class="logo">
+            <h1 onclick="location.reload();">Chào mừng đến với website của chúng tôi</h1>
+
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="index.html" target="_blank">Trang chủ</a></li>
+                    <li><a href="gioithieu.html" target="_blank">Giới thiệu</a></li>
+                    <li><a href="tintuc.html" target="_blank">Tin tức</a></li>
+                </ul>
+            </nav>
+            
+
+            <div class="navbar-right">
+                <li class="dropdown">
+                    <button class="dropdown-button">Cài đặt</button>
+                    <div class="dropdown-content">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="account.html">Tài khoản</a>
+                        <a href="tintuc.html">Tin tức</a>
+                        <a href="thong-tin-lien-he.html">Liên hệ</a>
+                        <a href="login.html">Đăng xuất</a>
+                    </div>
+                </li>
+            </div>
+
+        </div>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span id="close-btn" class="close-btn">&times;</span>
+                <h2>Xin chào!</h2>
+                <p>Nhà vườn Chín Tèo mến chào quý khách đã ghé thăm website của chúng tôi.</p>
+                <p>Hotline: ###.###.####</p>
+                <p>Chúc quý khách có 1 ngày tốt lành.</p>
+            </div>
+        </div>
+
+    </header>
+
+    <body>
+
+
+        <main>
+
+            <h2>Lịch sử hình thành</h2>
+            <ul>
+                <li>Hàng triệu năm trước</li>
+                <li>Được ông bà giữ gìn chăm sóc đến nay</li>
+                <li>Dưới bàn tay của nhà vườn, mai thêm đẹp, lạ với người qua đường.</li>
+            </ul>
+
+
+
+            <h2>Bạn sẽ được khi sỡ hữu cho mình giống mai độc lạ này:</h2>
+            <ol>
+                <li>Được nhà vườn yêu quý</li>
+                <li>Được dân chơi mai nể phục</li>
+                <li>Được người thân tin tưởng</li>
+            </ol>
+
+
+
+
+
+
+            <section>
+                <h2>Hãy xem hình ảnh bên dưới</h2>
+                <div class="product">
+                    <h3>Mai vàng số 12</h3>
+                    <img src="image12.jpg" alt="Mai vàng số 12">
+                    <ul>
+                        <li>Giống mai chọn lọc hàng đầu</li>
+                        <li>Chọn lọc kĩ càng</li>
+                        <li>Hiệu quả, đẹp, lạ</li>
+                    </ul>
+                    <div class="buttons">
+                        <a href="thong-tin-lien-he.html" class="button">Giá liên hệ</a>
+                        <a href="details12.html" class="button">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <h3>Mai vàng số 13</h3>
+                    <img src="image13.jpg" alt="Mai vàng số 13">
+                    <ul>
+                        <li>Mai cành rộng, lá noản</li>
+                        <li>Sù 2 thân, lạ, đẹp</li>
+                        <li>Tươi tốt, cho hoa đẹp, ít sâu bệnh</li>
+                    </ul>
+                    <div class="buttons">
+                        <a href="thong-tin-lien-he.html" class="button">Giá liên hệ</a>
+                        <a href="details13.html" class="button">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="product">
+                    <h3>Mai vàng số 8</h3>
+                    <img src="image8.jpg" alt="Mai vàng số 8">
+                    <ul>
+                        <li>Mai sum suê</li>
+                        <li>Tàng rộng, thoáng mát</li>
+                        <li>Hoa 10 cánh, đẹp nhức nách</li>
+                    </ul>
+                    <div class="buttons">
+                        <a href="thong-tin-lien-he.html" class="button">Giá liên hệ</a>
+                        <a href="details8.html" class="button">Xem chi tiết</a>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+            <style>
+                /* Ensure the header is fixed */
+                header {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: #f8f9fa;
+                    z-index: 1000;
+                    padding: 10px 20px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                /* Adjust the body top padding to prevent content overlap */
+                body {
+                    padding-top: 120px;
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                }
+
+                /* Style for the header title */
+                h1 {
+                    font-size: 24px;
+                    color: #007bff;
+                    margin: 0;
+                    transition: background-color 0.3s, color 0.3s;
+                    animation: pulse 2s infinite;
+                }
+
+                @keyframes pulse {
+                    0% {
+                        transform: scale(1);
+                    }
+
+                    50% {
+                        transform: scale(1.1);
+                    }
+
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+
+                h1:hover {
+                    background-color: #007bff;
+                    color: #f8f9fa;
+                }
+
+
+
+
+                /* Additional CSS for header buttons */
+                .input {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .value {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    padding: 8px 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: #f8f9fa;
+                }
+
+                .value svg {
+                    fill: #7D8590;
+                }
+
+                .content {
+                    padding: 20px;
+                    background-color: #f0f0f0;
+                    min-height: 100vh;
+                }
+            </style>
+            <style>
+                section {
+                    margin: 20px;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    background-color: #f9f9f9;
+                    border-radius: 8px;
+                    text-align: center;
+                }
+
+                h2 {
+                    color: #333;
+                    margin-bottom: 20px;
+                }
+
+                .product {
+                    display: inline-block;
+                    width: 30%;
+                    margin: 10px;
+                    padding: 20px;
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px;
+                    background-color: #fff;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    vertical-align: top;
+                }
+
+                .product h3 {
+                    color: #2e7d32;
+                }
+
+                .product img {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 15px;
+                    border-radius: 8px;
+                }
+
+                ul {
+                    list-style-type: disc;
+                    padding-left: 20px;
+                    text-align: left;
+                }
+
+                li {
+                    margin-bottom: 5px;
+                    color: #555;
+                }
+
+                .buttons {
+                    margin-top: 15px;
+                }
+
+                .button {
+                    display: inline-block;
+                    width: 45%;
+                    padding: 10px;
+                    background-color: #2e7d32;
+                    color: #fff;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    margin: 5px;
+                    text-align: center;
+                }
+
+                .button:hover {
+                    background-color: #1b5e20;
+                }
+            </style>
+            <style>
+                body {
+                    background: linear-gradient(to right, #ffffff, #b3ffb3);
+                    font-family: 'Roboto', sans-serif;
+
+                    color: #333;
+                }
+
+                nav ul {
+                    list-style: none;
+                    display: flex;
+                    margin: 0;
+                    padding: 0;
+                    align-items: center;
+                }
+
+                nav ul li {
+                    margin-left: 20px;
+                    position: relative;
+                }
+
+                nav ul li a,
+                .dropdown-button {
+                    text-decoration: none;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 4px;
+                    display: block;
+                    background-color: transparent;
+                    cursor: pointer;
+                    border: none;
+                    font-size: 16px;
+                }
+
+                nav ul li a:hover,
+                .dropdown-button:hover {
+                    background-color: #218838;
+                }
+
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    background-color: #0D1117;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                    border-radius: 5px;
+                    flex-direction: column;
+                }
+
+                .dropdown-content a {
+                    color: white;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown-content a:hover {
+                    background-color: #21262C;
+                }
+
+                .dropdown-button:focus+.dropdown-content,
+                .dropdown-content:hover {
+                    display: flex;
+                }
+
+                .dropdown-button:focus,
+                .dropdown-button:active {
+                    background-color: #1A1F24;
+                    outline: none;
+                }
+
+                .dropdown-button:focus::before,
+                .dropdown-button:active::before {
+                    opacity: 1;
+                }
+
+                .dropdown-content a svg {
+                    width: 15px;
+                    margin-right: 5px;
+                }
+            </style>
+            <style>
+
+            </style>
+
+
+            <footer>
+                <div class="footer-top">
+                    <p>NHẬN THÔNG TIN VỀ SẢN PHẨM MỚI NHẤT</p>
+                    <p>Vui lòng nhập Email, chúng tôi sẽ gửi thông tin và báo giá ngay!</p>
+                    <form>
+                        <input type="email" placeholder="Nhập Email">
+                        <a href="giveback.html">
+                            <button type="button">Gửi</button>
+                        </a>
+                    </form>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-section">
+                        <h3>CÔNG TY TNHH unknown</h3>
+                        <p><i class="fa fa-map-marker"></i> Địa chỉ: Đang cập nhật</p>
+                        <p><i class="fa fa-user"></i> Người đại diện: Trần Minh Tân</p>
+                        <p><i class="fa fa-id-card"></i> Mã số thuế: #</p>
+                        <p><i class="fa fa-envelope"></i> webmaster@tanbaycu.local</p>
+                        <p><i class="fa fa-phone"></i> 0835117727
+                    </div>
+                    <div class="footer-section">
+                        <h3>Địa chỉ bán buôn bán lẻ</h3>
+                        <p>Địa chỉ: Đang cập nhật</p>
+                        <p>Địa chỉ: Đang cập nhật</p>
+                        <p>ĐT: Đang cập nhật</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Danh mục</h3>
+                        <ul>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Chính sách đổi trả hàng</a></li>
+                            <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                            <li><a href="#">Sitemaps</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                <div class="chat-container">
+                    <h1>Nhắn tin với Bot Telegram của chúng tôi</h1>
+                    <a href="https://t.me/T7C botChat" target="_blank" rel="noopener">
+                        <img src="https://telegram.org/img/t_logo.png" alt="Nhắn tin với bot">
+                    </a>
+                </div>
+
+
+            </footer>
+
+
+
+            <script src="script.js"></script>
+            <style>
+                .review {
+                    margin-top: 20px;
+                }
+
+                .review textarea {
+                    width: 100%;
+                    height: 100px;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+
+                .review button {
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .submitted-reviews {
+                    margin-top: 20px;
+                }
+
+                .submitted-reviews h2 {
+                    margin-bottom: 10px;
+                }
+
+                .submitted-reviews ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
+
+                .submitted-reviews li {
+                    border-bottom: 1px solid #ccc;
+                    padding: 10px 0;
+                }
+            </style>
+            <style>
+                header {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 20px;
+                }
+
+                header {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 20px;
+                }
+
+                .header-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .logo {
+                    height: 50px;
+                    margin-right: 20px;
+                }
+
+                h1 {
+                    margin: 0;
+                    flex-grow: 1;
+                }
+
+                .navbar {
+                    margin-left: 20px;
+                }
+
+                .navbar-right .settings-button {
+                    background-color: transparent;
+                    color: #fff;
+                    border: none;
+                    font-size: 18px;
+                    cursor: pointer;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                }
+
+                .nav-menu {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .nav-menu li {
+                    margin: 0 10px;
+                }
+
+                .nav-menu li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 10px;
+                    text-decoration: none;
+                }
+
+                .nav-menu li a:hover {
+                    background-color: #575757;
+                }
+
+                .dropdown {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                }
+
+                .dropdown-button {
+                    background-color: #218838;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    padding: 10px 20px;
+                    display: flex;
+                    align-items: center;
+                    /* Căn giữa text trong nút */
+                    justify-content: center;
+                    /* Căn giữa text trong nút */
+                }
+
+                /* Hover effect for the dropdown button */
+                .navbar-right .dropdown-button:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                }
+
+                .dropbtn {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    color: black;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                .dropdown:hover .dropbtn {
+                    background-color: #45a049;
+                }
+            </style>
+            <style>
+                /* Hiệu ứng chữ chạy */
+                #submit-question label[for="contact_info"] {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                #submit-question label[for="contact_info"]::after {
+                    content: ' ';
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #007bff;
+                    bottom: 0;
+                    left: 0;
+                    transform: scaleX(0);
+                    transform-origin: bottom right;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                #submit-question input[type="text"]:focus+label[for="contact_info"]::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                }
+
+
+                /* Hiệu ứng cho thông báo đã gửi thành công */
+                .submit-success-message {
+                    display: none;
+                    color: green;
+                    margin-top: 10px;
+                    font-size: 16px;
+                    animation: fadein 0.5s;
+                }
+
+                @keyframes fadein {
+                    from {
+                        opacity: 0;
+                    }
+
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                footer {
+                    background-color: #f4f4f4;
+                    padding: 20px 0;
+                    border-top: 1px solid #ccc;
+                }
+
+                .footer-top {
+                    text-align: center;
+                    padding: 20px;
+                    background-color: #fff;
+                }
+
+                .footer-top p {
+                    margin: 5px 0;
+                }
+
+                .footer-top form {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+
+                .footer-top input[type="email"] {
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px 0 0 5px;
+                    outline: none;
+                }
+
+                .footer-top button {
+                    padding: 10px;
+                    border: none;
+                    background-color: #4CAF50;
+                    color: #fff;
+                    border-radius: 0 5px 5px 0;
+                    cursor: pointer;
+                }
+
+                .footer-bottom {
+                    display: flex;
+                    justify-content: space-around;
+                    padding: 20px;
+                    background-color: #eee;
+                    flex-wrap: wrap;
+                }
+
+                .footer-section {
+                    flex: 1;
+                    min-width: 250px;
+                    margin: 10px;
+                }
+
+                .footer-section h3 {
+                    color: #4CAF50;
+                }
+
+                .footer-section p,
+                .footer-section ul {
+                    margin: 5px 0;
+                }
+
+                .footer-section ul {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                .footer-section ul li {
+                    margin: 5px 0;
+                }
+
+                .footer-section i {
+                    margin-right: 10px;
+                }
+            </style>
+            <style>
+                .container {
+                    width: 80%;
+                    margin: 50px auto;
+                    background-color: #fff;
+                    padding: 20px;
+                    border: 2px solid #0077cc;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    /* Căn giữa nội dung trong container */
+                }
+
+                h2 {
+                    color: #0077cc;
+                }
+
+                ul,
+                ol {
+                    margin: 20px 0;
+                    padding-left: 20px;
+                    text-align: left;
+                    /* Căn trái các mục danh sách */
+                }
+            </style>
+            <style>
+                .popup {
+                    display: none;
+                    /* Hide initially */
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+
+                .popup-content {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #fff;
+                    padding: 20px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    border-radius: 10px;
+                    text-align: center;
+                    animation: fadeIn 0.5s;
+                }
+
+                .close-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    cursor: pointer;
+                    color: black;
+                    /* Change color to black */
+                    font-size: 24px;
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+
+                    to {
+                        opacity: 1;
+                    }
+                }
+
+                .popup-content img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 10px;
+                }
+
+                .popup-content h2 {
+                    color: #4CAF50;
+                    /* Màu chữ xanh lá cây */
+                }
+
+                .popup-content p {
+                    color: #333;
+                    /* Màu chữ xám đậm */
+                }
+
+                .highlight {
+                    color: #FF5722;
+                    /* Màu chữ cam */
+                    font-weight: bold;
+                }
+            </style>
+            <script>
+                // JavaScript to show and hide popup
+                document.addEventListener('DOMContentLoaded', function () {
+                    var popup = document.getElementById('popup');
+                    var closeBtn = document.getElementById('close-btn');
+
+                    // Show popup on page load
+                    popup.style.display = 'block';
+
+                    // Close popup when close button is clicked
+                    closeBtn.onclick = function () {
+                        popup.style.display = 'none';
+                    };
+
+                    // Close popup when clicking outside of it
+                    window.onclick = function (event) {
+                        if (event.target == popup) {
+                            popup.style.display = 'none';
+                        }
+                    };
+                });
+
+            </script>
+            <script>
+
+            </script>
+            <style>
+                .chat-container {
+                    position: fixed;
+                    bottom: 10px;
+                    /* Khoảng cách với đáy của màn hình */
+                    right: 10px;
+                    /* Khoảng cách với bên phải của màn hình */
+                    background-color: white;
+                    border: 1px solid #ccc;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    padding: 10px;
+                    width: 120px;
+                    /* Độ rộng của hộp chat */
+                    max-width: 90%;
+                    text-align: center;
+                    z-index: 1000;
+                }
+
+                .chat-container h1 {
+                    color: #00796b;
+                    font-size: 14px;
+                    /* Kích thước tiêu đề */
+                    margin-bottom: 5px;
+                }
+
+                .chat-container a {
+                    text-decoration: none;
+                }
+
+                .chat-container img {
+                    width: 60px;
+                    /* Độ rộng của logo */
+                    border-radius: 50%;
+                    /* Làm tròn góc cho logo */
+                }
+
+                .input-wrapper input {
+                    background-color: #eee;
+                    border: none;
+                    padding: 1rem;
+                    font-size: 1rem;
+                    width: 13em;
+                    border-radius: 1rem;
+                    color: lightcoral;
+                    box-shadow: 0 0.4rem #dfd9d9;
+                    cursor: pointer;
+                }
+
+                .input-wrapper input:focus {
+                    outline-color: lightcoral;
+                }
+
+                .input-wrapper input {
+                    width: 10em;
+                    /* Hoặc một giá trị phù hợp khác */
+                }
+            </style>
