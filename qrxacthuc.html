@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mã QR Thông Tin</title>
+    <meta name="description" content="Trang web hiển thị các mã QR liên kết đến thông tin cá nhân và mạng xã hội.">
+    <meta name="keywords" content="QR code, thông tin cá nhân, mạng xã hội, GitHub, Facebook, Zalo, YouTube, Telegram">
+    <meta name="author" content="Tên của bạn">
+
+    <!-- Font Awesome cho các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .qr-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        section {
+            margin: 10px;
+            position: relative;
+            width: 100%;
+            max-width: 150px;
+        }
+        .qr-section img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .qr-section img:hover {
+            transform: scale(1.1);
+        }
+        .popup {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            width: 280px;
+        }
+        .popup.show {
+            display: block;
+        }
+        .popup h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .popup a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .popup a:hover {
+            text-decoration: underline;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            color: #333;
+            font-size: 20px;
+        }
+        .close-btn:hover {
+            color: #ff0000;
+        }
+
+        /* Sắp xếp các section theo ký tự bắt đầu */
+        #qr-contact { order: 1; }
+        #qr-facebook { order: 2; }
+        #qr-github { order: 3; }
+        #qr-intro { order: 4; }
+        #qr-key { order: 5; }
+        #qr-payment { order: 6; }
+        #qr-telegram { order: 7; }
+        #qr-youtube { order: 8; }
+        #qr-zalo { order: 9; }
+
+        @media (max-width: 600px) {
+            .qr-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            section {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mã QR Thông Tin</h1>
+        <p>Nhấn vào mã QR để xem thông tin chi tiết.</p>
+
+        <div class="qr-container">
+
+            <!-- QR Liên hệ -->
+            <section id="qr-contact">
+                <h2>QR Liên hệ</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-contact.png" alt="QR Liên hệ" onclick="showPopup('popup-contact')">
+                    <div class="popup" id="popup-contact">
+                        <span class="close-btn" onclick="hidePopup('popup-contact')">&times;</span>
+                        <h2>Thông tin Liên hệ</h2>
+                        <p>Truy cập đường link bên dưới để được hổ trợ.</p>
+                        <a href="https://tanbaycu.github.io/thong-tin-lien-he.html target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Facebook -->
+            <section id="qr-facebook">
+                <h2>QR Facebook</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-facebook.png" alt="QR Facebook" onclick="showPopup('popup-facebook')">
+                    <div class="popup" id="popup-facebook">
+                        <span class="close-btn" onclick="hidePopup('popup-facebook')">&times;</span>
+                        <h2>Thông tin Facebook</h2>
+                        <p>Kết bạn đã xem những thông báo mới nhất từ nhà phát triển.</p>
+                        <a href="https://www.facebook.com/tan.hurican/" target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Zalo -->
+            <section id="qr-zalo">
+                <h2>QR Zalo</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-zalo.png" alt="QR Zalo" onclick="showPopup('popup-zalo')">
+                    <div class="popup" id="popup-zalo">
+                        <span class="close-btn" onclick="hidePopup('popup-zalo')">&times;</span>
+                        <h2>Thông tin Zalo</h2>
+                        <p>QR Zalo (24/6)</p>
+                        <a href="zalo.app/0835117727" target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR YouTube -->
+            <section id="qr-youtube">
+                <h2>QR YouTube</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-youtube.png" alt="QR YouTube" onclick="showPopup('popup-youtube')">
+                    <div class="popup" id="popup-youtube">
+                        <span class="close-btn" onclick="hidePopup('popup-youtube')">&times;</span>
+                        <h2>Thông tin YouTube</h2>
+                        <p>Chi tiết thông tin YouTube.</p>
+                        <a href="youtube.com" target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR GitHub -->
+            <section id="qr-github">
+                <h2>QR GitHub</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-github.png" alt="QR GitHub" onclick="showPopup('popup-github')">
+                    <div class="popup" id="popup-github">
+                        <span class="close-btn" onclick="hidePopup('popup-github')">&times;</span>
+                        <h2>Thông tin GitHub</h2>
+                        <p>Liên hệ hợp tác và phát triễn.</p>
+                        <a href="https://github.com/tanbaycu" target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Telegram -->
+            <section id="qr-telegram">
+                <h2>QR Telegram</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-telegram.png" alt="QR Telegram" onclick="showPopup('popup-telegram')">
+                    <div class="popup" id="popup-telegram">
+                        <span class="close-btn" onclick="hidePopup('popup-telegram')">&times;</span>
+                        <h2>Thông tin Telegram</h2>
+                        <p>Hỗ trợ cho trường hợp khẩn cấp không liên lạc bằng Số điện thoại hoặc Gmail (24/7).</p>
+                        <a href="t.me/tanbaycu" target="_blank">Truy cập liên kết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Thanh toán -->
+            <section id="qr-payment">
+                <h2>QR Thanh toán</h2>
+                <div class="qr-section">
+                    <img src="https://tanbaycu.github.io/qrboots/qr-payment.png" alt="QR Thanh toán" onclick="showPopup('popup-payment')">
+                    <div class="popup" id="popup-payment">
+                        <span class="close-btn" onclick="hidePopup('popup-payment')">&times;</span>
+                        <h2>Thông tin Thanh toán</h2>
+                        <p>Vietcombank
+                            TRAN MINH TAN
+                            1045864832
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- QR Key -->
+            <section id="qr-key">
+                <h2>QR Key</h2>
+                <div class="qr-section">
+                    <img src="URL_QR_KEY" alt="QR Key" onclick="showPopup('popup-key')">
+                    <div class="popup" id="popup-key">
+                        <span class="close-btn" onclick="hidePopup('popup-key')">&times;</span>
+                        <h2>Thông tin Key</h2>
+                        <p>Tài của bản không trợ KEY cho nhà phát triển.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(id) {
+            document.getElementById(id).classList.add('show');
+        }
+
+        function hidePopup(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+    </script>
+</body>
+</html>
