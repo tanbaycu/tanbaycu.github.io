@@ -27,78 +27,112 @@
         content="Vườn mai Chín Tèo cung cấp các loại mai vàng chất lượng cao. Hãy đến với chúng tôi để chọn cho mình những cây mai đẹp nhất và độc đáo nhất.">
     <meta name="twitter:image" content="https://tanbaycu.github.io/images/Logo.png">
     <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
     <header>
-
-        <div class="header-content">
-            <img src="images/Logo.png" alt="Website Logo" class="logo">
-            <h1 onclick="location.reload();">Chào mừng đến với website của chúng tôi</h1>
-
+        <div class="header-wrapper">
+            <div class="logo-container">
+                <img src="images/Logo.png" alt="Website Logo" class="logo">
+                <h1 onclick="reloadPage()">Vườn mai Chín Tèo</h1>
+            </div>
             <nav class="navbar">
                 <ul class="nav-menu">
                     <li><a href="index.html" target="_blank">Trang chủ</a></li>
                     <li><a href="gioithieu.html" target="_blank">Giới thiệu</a></li>
-                    <li><a href="tintuc.html" target="_blank">Tin tức</a></li>
-                </ul>
+                    <li class="nav-item-with-notification">
+                      <a href="tintuc.html" target="_blank">Tin tức</a>
+                      <span class="notification-bell"><i class="fas fa-bell"></i></span>
+                    </li>
+                  </ul>
+                <div class="navbar-right">
+                    <li class="dropdown">
+                        <button class="dropdown-button">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="index.html">Trang chủ</a>
+                            <a href="account.html">Tài khoản</a>
+                            <a href="tintuc.html">Tin tức</a>
+                            <a href="thong-tin-lien-he.html">Liên hệ</a>
+                            <a href="login.html">Đăng xuất</a>
+                        </div>
+                    </li>
+                </div>
             </nav>
-
-
-            <div class="navbar-right">
-                <li class="dropdown">
-                    <button class="dropdown-button">Cài đặt</button>
-                    <div class="dropdown-content">
-                        <a href="index.html">Trang chủ</a>
-                        <a href="account.html">Tài khoản</a>
-                        <a href="tintuc.html">Tin tức</a>
-                        <a href="thong-tin-lien-he.html">Liên hệ</a>
-                        <a href="login.html">Đăng xuất</a>
-                    </div>
-                </li>
-            </div>
-
         </div>
-        <div id="popup" class="popup">
-            <div class="popup-content">
-                <span id="close-btn" class="close-btn">&times;</span>
-                <h2>Xin chào!</h2>
-                <p>Nhà vườn Chín Tèo mến chào quý khách đã ghé thăm website của chúng tôi.</p>
-                <p>WEB VẪN ĐANG ĐƯỢC CHỈNH SỬA ĐỂ HOÀN THIỆN NHẤT VỀ MẶT GIAO DIỆN.</p>
-                <p>VUI LÒNG CHỈNH SANG TÙY CHỌN TRANG WEB DÀNH CHO MÁY TÍNH Ở CÀI ĐẶT CHROME ĐỂ CÓ THỂ THẤY TOÀN BỘ TRANG WEB.</p>
-            </div>
-        </div>
-
     </header>
+
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-btn" class="close-btn">&times;</span>
+            <h2>Xin chào!</h2>
+            <p>Nhà vườn Chín Tèo mến chào quý khách đã ghé thăm website của chúng tôi.</p>
+            <p>WEB VẪN ĐANG ĐƯỢC CHỈNH SỬA ĐỂ HOÀN THIỆN NHẤT VỀ MẶT GIAO DIỆN.</p>
+            <p>VUI LÒNG CHỈNH SANG TÙY CHỌN TRANG WEB DÀNH CHO MÁY TÍNH Ở CÀI ĐẶT CHROME ĐỂ CÓ THỂ THẤY TOÀN BỘ TRANG
+                WEB.</p>
+        </div>
+    </div>
 
     <body>
 
 
         <main>
 
-            <h2>Lịch sử hình thành</h2>
-            <ul>
-                <li>Hàng triệu năm trước</li>
-                <li>Được ông bà giữ gìn chăm sóc đến nay</li>
-                <li>Dưới bàn tay của nhà vườn, mai thêm đẹp, lạ với người qua đường.</li>
-            </ul>
+            <section class="main-container">
+                <div class="left-section">
+                    <div class="history">
+                        <h2>Lịch sử hình thành</h2>
+                        <ul>
+                            <li>Hàng triệu năm trước</li>
+                            <li>Được ông bà giữ gìn chăm sóc đến nay</li>
+                            <li>Dưới bàn tay của nhà vườn, mai thêm đẹp, lạ với người qua đường.</li>
+                        </ul>
+                    </div>
+            
+                    <div class="benefits">
+                        <h2>Đặc điểm:</h2>
+                        <ol>
+                            <li>Được nhà vườn yêu quý</li>
+                            <li>Được dân chơi mai nể phục</li>
+                            <li>Được người thân tin tưởng</li>
+                        </ol>
+                    </div>
+                </div>
+            
+                <div class="right-section">
+                    <div class="care-tips">
+                        <h2>Cách chăm sóc cây cảnh</h2>
+                        <p>Để cây cảnh của bạn luôn xanh tốt, hãy chú ý những điểm sau:</p>
+                        <ul>
+                            <li>Đảm bảo ánh sáng đầy đủ</li>
+                            <li>Đảm bảo tưới nước đều đặn</li>
+                            <li>Thường xuyên bón phân</li>
+                            <li>Kiểm tra sâu bệnh và xử lý kịp thời</li>
+                        </ul>
+                    </div>
+            
+                    <div class="customer-reviews">
+                        <h2>Đánh giá của khách hàng</h2>
+                        <p>"Cây rất đẹp và khỏe mạnh! Tôi rất hài lòng với dịch vụ của cửa hàng."</p>
+                        <p>"Được nhân viên tư vấn tận tình, cây cảnh giao đến đúng như mô tả. Cảm ơn cửa hàng!"</p>
+                    </div>
+                </div>
+            </section>
+            
+            
 
 
 
-            <h2>Bạn sẽ được khi sỡ hữu cho mình giống mai độc lạ này:</h2>
-            <ol>
-                <li>Được nhà vườn yêu quý</li>
-                <li>Được dân chơi mai nể phục</li>
-                <li>Được người thân tin tưởng</li>
-            </ol>
 
 
 
 
-
-
-            <section>
-                <h2>Hãy xem hình ảnh bên dưới</h2>
+            <section class="product-gallery">
+                <h2>Một số sản phẩm nổi bật</h2>
                 <div class="product">
                     <h3>Mai vàng số 12</h3>
                     <img src="image12.jpg" alt="Mai vàng số 12">
@@ -139,6 +173,7 @@
                     </div>
                 </div>
             </section>
+            
 
 
 
@@ -148,15 +183,23 @@
 
             <style>
                 header {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
                     background-color: #4CAF50;
                     color: white;
-                    padding: 10px;
-                    z-index: 1000;
+                    padding: 10px 20px;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    position: fixed;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 1000;
+                }
+
+                .header-wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
                 }
 
                 main {
@@ -168,15 +211,6 @@
                     padding-top: 80px;
                     font-family: Arial, sans-serif;
                     margin: 0;
-                }
-
-
-                h1 {
-                    font-size: 24px;
-                    color: #007bff;
-                    margin: 0;
-                    transition: background-color 0.3s, color 0.3s;
-                    animation: pulse 2s infinite;
                 }
 
                 @keyframes pulse {
@@ -193,10 +227,6 @@
                     }
                 }
 
-                h1:hover {
-                    background-color: #007bff;
-                    color: #f8f9fa;
-                }
 
 
 
@@ -243,61 +273,85 @@
                     margin-bottom: 20px;
                 }
 
-                .product {
-                    display: inline-block;
-                    width: 30%;
-                    margin: 10px 0;
+                .product-gallery {
                     padding: 20px;
-                    border: 1px solid #e0e0e0;
-                    border-radius: 8px;
-                    background-color: #fff;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    vertical-align: top;
+                    background-color: #f9f9f9;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
                 }
-
-                .product h3 {
-                    color: #2e7d32;
+                
+                .product {
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                    margin: 15px;
+                    padding: 20px;
+                    text-align: center;
+                    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+                    transform-style: preserve-3d;
+                    position: relative; /* Để áp dụng hiệu ứng phông nền */
                 }
-
+                
+                .product:hover {
+                    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+                    box-shadow: 0 12px 24px rgba(0,0,0,0.3); /* Tăng bóng đổ khi hover */
+                }
+                
                 .product img {
-                    width: 100%;
-                    height: auto;
-                    margin-bottom: 15px;
-                    border-radius: 8px;
+                    max-width: 100%;
+                    border-radius: 10px;
+                    transition: transform 0.3s;
                 }
-
-                ul {
-                    list-style-type: disc;
-                    padding-left: 20px;
-                    text-align: left;
+                
+                .product:hover img {
+                    transform: scale(1.1); /* Phóng to hình ảnh khi hover */
                 }
-
-                li {
-                    margin-bottom: 5px;
+                
+                .product h3 {
+                    font-size: 1.5rem;
+                    color: #333;
+                    margin-bottom: 10px;
+                    transition: color 0.3s;
+                }
+                
+                .product:hover h3 {
+                    color: #007bff; /* Đổi màu tiêu đề khi hover */
+                }
+                
+                .product ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 10px 0;
+                }
+                
+                .product ul li {
+                    margin-bottom: 8px;
+                    font-size: 14px;
                     color: #555;
                 }
-
-                .buttons {
-                    margin-top: 15px;
+                
+                .product .buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
                 }
-
+                
                 .button {
-                    display: inline-block;
-                    width: 45%;
-                    padding: 10px;
-                    background-color: #2e7d32;
-                    color: #fff;
-                    border: none;
-                    border-radius: 8px;
-                    cursor: pointer;
                     text-decoration: none;
-                    margin: 5px;
-                    text-align: center;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    color: #fff;
+                    background-color: #007bff;
+                    transition: background-color 0.3s, transform 0.3s;
                 }
-
+                
                 .button:hover {
-                    background-color: #1b5e20;
+                    background-color: #0056b3;
+                    transform: scale(1.1); /* Phóng to nút khi hover */
                 }
+                
+                
 
                 /* Đối với màn hình nhỏ hơn 768px */
                 @media (max-width: 768px) {
@@ -321,92 +375,179 @@
                 }
             </style>
             <style>
-                body {
-                    background: linear-gradient(to right, #ffffff, #b3ffb3);
-                    font-family: 'Roboto', sans-serif;
-
-                    color: #333;
-                }
-
-                nav ul {
-                    list-style: none;
+                .logo-container {
                     display: flex;
-                    margin: 0;
-                    padding: 0;
                     align-items: center;
                 }
 
-                nav ul li {
-                    margin-left: 20px;
-                    position: relative;
+                .logo {
+                    height: 50px;
+                    margin-right: 15px;
                 }
 
-                nav ul li a,
-                .dropdown-button {
-                    text-decoration: none;
-                    color: white;
-                    padding: 10px 15px;
-                    border-radius: 4px;
-                    display: block;
-                    background-color: transparent;
+                h1 {
+                    margin: 0;
+                    font-size: 24px;
+                }
+                h1 {
                     cursor: pointer;
-                    border: none;
-                    font-size: 16px;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                
+                h1:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                }
+                
+                
+
+                .navbar {
+                    display: flex;
+                    align-items: center;
                 }
 
-                nav ul li a:hover,
-                .dropdown-button:hover {
-                    background-color: #218838;
+                .nav-menu {
+                    display: flex;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
                 }
+
+                .nav-menu li {
+                    margin: 0 10px;
+                }
+
+                .nav-menu li a {
+                    color: white;
+                    text-decoration: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                }
+
+                .nav-menu li a:hover {
+                    background-color: #45a049;
+                }
+
+                .navbar-right {
+                    display: flex;
+                    align-items: center;
+                }
+                
 
                 .dropdown {
                     position: relative;
-                    display: inline-block;
+                }
+
+                .dropdown-button {
+                    background-color: #388E3C;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                }
+
+                .dropdown-button i {
+                    font-size: 20px;
+                }
+
+                .dropdown-button:hover {
+                    background-color: #2c6b2f;
                 }
 
                 .dropdown-content {
                     display: none;
                     position: absolute;
                     right: 0;
-                    background-color: #0D1117;
+                    top: 100%;
+                    background-color: #ffffff;
                     min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                    z-index: 1;
+                    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
                     border-radius: 5px;
-                    flex-direction: column;
+                    z-index: 1;
                 }
 
                 .dropdown-content a {
-                    color: white;
+                    color: black;
                     padding: 12px 16px;
                     text-decoration: none;
                     display: block;
+                    text-align: left;
                 }
 
                 .dropdown-content a:hover {
-                    background-color: #21262C;
+                    background-color: #f1f1f1;
                 }
 
-                .dropdown-button:focus+.dropdown-content,
-                .dropdown-content:hover {
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                .main-container {
                     display: flex;
+                    justify-content: space-between;
+                    padding: 20px;
+                    gap: 20px;
                 }
-
-                .dropdown-button:focus,
-                .dropdown-button:active {
-                    background-color: #1A1F24;
-                    outline: none;
+                
+                .left-section, .right-section {
+                    flex: 1;
+                    background-color: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
                 }
-
-                .dropdown-button:focus::before,
-                .dropdown-button:active::before {
-                    opacity: 1;
+                
+                .left-section h2, .right-section h2 {
+                    font-size: 1.8rem;
+                    color: #333;
+                    margin-bottom: 15px;
                 }
-
-                .dropdown-content a svg {
-                    width: 15px;
-                    margin-right: 5px;
+                
+                .left-section ul, .left-section ol, .right-section ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style-position: inside;
                 }
+                
+                .left-section ul li, .left-section ol li, .right-section ul li {
+                    margin-bottom: 10px;
+                    font-size: 1rem;
+                    color: #555;
+                }
+                
+                .left-section ol {
+                    padding-left: 20px; /* Add some space for ordered list */
+                }
+                
+                .right-section p {
+                    font-size: 1rem;
+                    color: #666;
+                    margin-bottom: 10px;
+                }
+                
+                .right-section .customer-reviews {
+                    border-top: 2px solid #007bff;
+                    padding-top: 10px;
+                    margin-top: 15px;
+                }
+                
+                .right-section .customer-reviews p {
+                    font-style: italic;
+                    color: #444;
+                }
+                
+                .right-section .care-tips ul li {
+                    margin-bottom: 8px;
+                    font-size: 1rem;
+                    color: #444;
+                }
+                
+                
+                
             </style>
             <style>
 
@@ -461,6 +602,9 @@
                 </div>
 
 
+
+
+
             </footer>
 
 
@@ -513,127 +657,9 @@
                 }
             </style>
             <style>
-                .header-content {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                }
 
-                .logo {
-                    height: 50px;
-                    margin-right: 20px;
-                }
 
-                h1 {
-                    margin: 0;
-                    flex-grow: 1;
-                }
 
-                .navbar {
-                    margin-left: 20px;
-                    flex-direction: column;
-                }
-
-                .navbar-right .settings-button {
-                    background-color: transparent;
-                    color: #fff;
-                    border: none;
-                    font-size: 18px;
-                    cursor: pointer;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    transition: background-color 0.3s;
-                }
-
-                .nav-menu {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    align-items: center;
-                }
-
-                .nav-menu li {
-                    margin: 5px 0;
-                }
-
-                .nav-menu li a {
-                    display: block;
-                    color: white;
-                    text-align: center;
-                    padding: 10px;
-                    text-decoration: none;
-                    border-radius: 5px;
-                }
-
-                .nav-menu li a:hover {
-                    background-color: #575757;
-                }
-
-                .dropdown {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
-                }
-
-                .dropdown-button {
-                    background-color: #218838;
-                    border: none;
-                    cursor: pointer;
-                    font-size: 16px;
-                    padding: 10px 20px;
-                    display: flex;
-                    align-items: center;
-                    /* Căn giữa text trong nút */
-                    justify-content: center;
-                    /* Căn giữa text trong nút */
-                }
-
-                /* Hover effect for the dropdown button */
-                .navbar-right .dropdown-button:hover {
-                    background-color: rgba(255, 255, 255, 0.2);
-                }
-
-                .dropbtn {
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    border: none;
-                    cursor: pointer;
-                }
-
-                .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    right: 0;
-                    top: 100%;
-                    background-color: #f9f9f9;
-                    min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                    z-index: 1;
-                }
-
-                .dropdown-content a {
-                    color: black;
-                    padding: 12px 16px;
-                    text-decoration: none;
-                    display: block;
-                    text-align: left;
-                }
-
-                .dropdown-content a:hover {
-                    background-color: #f1f1f1;
-                }
-
-                .dropdown:hover .dropdown-content {
-                    display: block;
-                }
-
-                .dropdown:hover .dropbtn {
-                    background-color: #45a049;
-                }
             </style>
             <style>
                 /* Hiệu ứng chữ chạy */
@@ -871,6 +897,9 @@
 
             </script>
             <script>
+                function reloadPage() {
+                    window.location.reload();
+                }
 
             </script>
             <style>
@@ -930,4 +959,5 @@
                     width: 10em;
                     /* Hoặc một giá trị phù hợp khác */
                 }
+                
             </style>
