@@ -8,6 +8,7 @@
     <meta name="description" content="Trang web hiển thị các mã QR liên kết đến thông tin cá nhân và mạng xã hội.">
     <meta name="keywords" content="QR code, thông tin cá nhân, mạng xã hội, GitHub, Facebook, Zalo, YouTube, Telegram">
     <meta name="author" content="Tân 7 Cú">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
     <!-- Font Awesome cho các icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -35,12 +36,11 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            transition: opacity 0.3s;
             position: relative;
         }
 
         .qr-container.muted {
-            opacity: 0.5;
+            filter: blur(4px);
         }
 
         section {
@@ -111,43 +111,6 @@
             color: #ff0000;
         }
 
-        /* Sắp xếp các section theo ký tự bắt đầu */
-        #qr-contact {
-            order: 1;
-        }
-
-        #qr-facebook {
-            order: 2;
-        }
-
-        #qr-github {
-            order: 3;
-        }
-
-        #qr-intro {
-            order: 4;
-        }
-
-        #qr-key {
-            order: 5;
-        }
-
-        #qr-payment {
-            order: 6;
-        }
-
-        #qr-telegram {
-            order: 7;
-        }
-
-        #qr-youtube {
-            order: 8;
-        }
-
-        #qr-zalo {
-            order: 9;
-        }
-
         @media (max-width: 600px) {
             .qr-container {
                 flex-direction: column;
@@ -176,11 +139,6 @@
         .overlay.show {
             display: block;
             opacity: 1;
-        }
-
-        .overlay.hidden {
-            display: none;
-            opacity: 0;
         }
     </style>
 </head>
