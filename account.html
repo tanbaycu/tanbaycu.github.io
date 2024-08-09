@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Tài Khoản</title>
+    <style>
+        body {
+            background-color: #e0f7fa; /* Màu xanh nhạt */
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .header {
+            background-color: #00796b; /* Màu xanh đậm */
+            color: white;
+            padding: 10px 0;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header-content span {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .header-content span:last-child {
+            margin-right: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .account-info h2, .contact-info h2 {
+            color: #00796b; /* Màu xanh đậm */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .account-info p, .contact-info label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .account-info span, .contact-info span {
+            font-weight: bold;
+            color: #333;
+        }
+        .contact-info label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-top: 10px;
+        }
+        .contact-info input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-info button {
+            background-color: #00796b; /* Màu xanh đậm */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s;
+            width: 100%;
+        }
+        .contact-info button:hover {
+            background-color: #004d40; /* Màu xanh đậm hơn khi hover */
+            transform: translateY(-2px);
+        }
+        .edit-button {
+            background-color: #ff9800; /* Màu cam */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .edit-button:hover {
+            background-color: #f57c00; /* Màu cam nhạt khi hover */
+        }
+        .popup {
+            display: none; /* Ẩn popup ban đầu */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .popup-content h2 {
+            color: #4CAF50; /* Màu chữ xanh lá cây */
+        }
+        .popup-content p {
+            color: #333; /* Màu chữ xám đậm */
+        }
+        .highlight {
+            color: #FF5722; /* Màu chữ cam */
+            font-weight: bold;
+        }
+        .menu-link {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="menu-link">
+                <span>Trang Chủ</span>
+            </a>
+            <a href="tintuc.html" class="menu-link">
+                <span>Tin Tức</span>
+            </a>
+            <span id="headerUsername">Người dùng</span>
+            <span id="headerAccountBalance">$0</span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="account-info">
+            <h2>THÔNG TIN TÀI KHOẢN</h2>
+            <p>ID của bạn: <span id="userId">Loading...</span></p>
+            <p>Tên tài khoản: <span id="username">Loading...</span></p>
+            <p>Số dư tài khoản: <span id="accountBalance">Loading...</span> VNĐ</p>
+            <p>Số dư Acoin: <span id="acoinBalance">Loading...</span></p>
+            <p>Số dư tiền khuyến mãi: <span id="promoBalance">Loading...</span></p>
+        </div>
+        <div class="contact-info">
+            <h2>THÔNG TIN LIÊN HỆ</h2>
+            <label for="phone">Số điện thoại:</label>
+            <input type="text" id="phone" readonly>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" readonly>
+
+            <button id="editButton" class="edit-button" onclick="enableEditMode()">Chỉnh sửa</button>
+            <button type="submit" id="saveButton" style="display: none;" class="edit-button" onclick="saveContactInfo()">Lưu thay đổi</button>
+        </div>
+    </div>
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-btn" class="close-btn">&times;</span>
+            <h2>Xin chào!</h2>
+            <p>Chào mừng bạn đến với trang thông tin tài khoản của chúng tôi.</p>
+            <p>Nhấn vào đây để bắt đầu quản lý tài khoản của bạn.</p>
+        </div>
+    </div>
+
+    <script>
+        // Load user information from localStorage
+        window.onload = function() {
+            var userInfoStr = localStorage.getItem('userInfo');
+            if (userInfoStr) {
+                var userInfo = JSON.parse(userInfoStr);
+                document.getElementById('userId').innerText = userInfo.id;
+                document.getElementById('username').innerText = userInfo.username;
+                document.getElementById('headerUsername').innerText = userInfo.username;
+                document.getElementById('accountBalance').innerText = userInfo.accountBalance;
+                document.getElementById('headerAccountBalance').innerText = userInfo.accountBalance;
+                document.getElementById('acoinBalance').innerText = userInfo.acoinBalance;
+                document.getElementById('promoBalance').innerText = userInfo.promoBalance;
+
+                if (userInfo.contactInfo) {
+                    document.getElementById('phone').value = userInfo.contactInfo.phone;
+                    document.getElementById('email').value = userInfo.contactInfo.email;
+                }
+            } else {
+                alert('Không có thông tin người dùng. Vui lòng đăng nhập lại.');
+                window.location.href = 'login.html';
+            }
+        };
+
+        // Enable edit mode for contact information
+        function enableEditMode() {
+            document.getElementById('phone').removeAttribute('readonly');
+            document.getElementById('email').removeAttribute('readonly');
+            document.getElementById('saveButton').style.display = 'block';
+        }
+
+        // Save edited contact information to localStorage
+        function saveContactInfo() {
+            var userInfoStr = localStorage.getItem('userInfo');
+            if (userInfoStr) {
+                var userInfo = JSON.parse(userInfoStr);
+                var phone = document.getElementById('phone').value;
+                var email = document.getElementById('email').value;
+
+                userInfo.contactInfo = {
+                    phone: phone,
+                    email: email
+                };
+
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                alert('Thông tin liên hệ đã được lưu thành công!');
+
+                // Update display
+                document.getElementById('phone').setAttribute('readonly', true);
+                document.getElementById('email').setAttribute('readonly', true);
+                document.getElementById('saveButton').style.display = 'none';
+            } else {
+                alert('Không có thông tin người dùng. Vui lòng đăng nhập lại.');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Show popup function
+        function showPopup() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
+        }
+
+        // Close popup function
+        function closePopup() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
+        // Event listener for close button
+        document.getElementById('close-btn').addEventListener('click', closePopup);
+
+        // Show popup on page load (you can modify this to show popup at a specific condition)
+        window.addEventListener('load', function() {
+            showPopup();
+        });
+    </script>
+</body>
+</html>

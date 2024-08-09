@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức nổi bật</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffffff, #b3ffb3); /* Gradient từ trắng đến xanh lá cây nhạt */
+            font-family: Arial, sans-serif;
+            margin: 0; /* Loại bỏ khoảng cách mặc định của trình duyệt */
+            padding-bottom: 60px; /* Để chứa footer mà không bị chồng lên nội dung chính */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            cursor: pointer; /* Cho phép con trỏ khi rê chuột */
+            margin-top: 20px; /* Khoảng cách từ đỉnh trang */
+        }
+        h1:hover {
+            color: #4CAF50; /* Màu xanh lá cây khi rê chuột vào */
+        }
+        .news-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            overflow: hidden;
+        }
+        .news-item h2 {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .news-item p {
+            color: #777;
+        }
+        .news-item img {
+            float: left;
+            margin-right: 10px;
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Dropdown section */
+        .dropdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+        }
+
+        .dropbtn {
+            background-color: #4CAF50; /* Màu xanh lá cây */
+            color: white;
+            padding: 10px 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .dropbtn:hover {
+            background-color: #3e8e41; /* Màu xanh lá cây nhạt khi rê chuột vào */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            right: 0;
+            top: 40px;
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1; /* Màu xám nhạt khi rê chuột vào */
+        }
+
+        /* Footer section */
+        footer {
+            text-align: center;
+            background-color: #333; /* Màu đen */
+            color: #fff; /* Màu trắng cho văn bản */
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        // Hàm để tải lại dữ liệu tin tức từ server
+        function reloadNews() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Cập nhật nội dung tin tức
+                    document.getElementById("news-container").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "news.php", true); // Thay đổi đường dẫn đến script xử lý cập nhật tin tức
+            xhttp.send();
+        }
+    
+        // Tự động gọi hàm reloadNews() sau mỗi 5 phút (300,000 miligiây)
+        setInterval(reloadNews, 300000); // Thay đổi thời gian cập nhật tại đây nếu cần
+    </script>
+</head>
+<body>
+    <h1 onclick="reloadNews();">Tin tức nổi bật</h1>
+
+    <div id="news-container">
+        <!-- Nội dung tin tức sẽ được thay đổi bởi JavaScript -->
+        <div class="news-item">
+            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 1">
+            <h2><a href="https://example.com/article1" target="_blank" rel="noopener">  Tiêu đề bài báo 1</a></h2>
+            <p>Mô tả ngắn về bài báo 1.</p>
+        </div>
+
+        <div class="news-item">
+            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 2">
+            <h2><a href="https://example.com/article2" target="_blank" rel="noopener"> đề bài báo 2</a></h2>
+            <p>Mô tả ngắn về bài báo 2.</p>
+        </div>
+
+        <div class="news-item">
+            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 3">
+            <h2><a href="https://example.com/article3" target="_blank" rel="noopener" >Tiêu đề bài báo 3</a></h2>
+            <p>Mô tả ngắn về bài báo 3.</p>
+        </div>
+    </div>
+
+    <!-- Dropdown và Footer sections giữ nguyên như bạn đã thiết kế -->
+
+    <!-- Dropdown section -->
+    <div class="dropdown">
+        <button class="dropbtn">Cài đặt 👇</button>
+        <div class="dropdown-content">
+            <a href="index.html">Trang chủ</a>
+            <a href="gioithieu.html">Giới thiệu</a>
+            <a href="thong-tin-lien-he.html">Thông tin</a>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; 2024 Nhà vườn Chín Tèo. DMCA Protected.</p>
+    </footer>
+
+</body>
+</html>

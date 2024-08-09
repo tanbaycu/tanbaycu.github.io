@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin liên hệ</title>
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body {
+            background: linear-gradient(to right, #ffffff, #b3ffb3); /* Gradient từ trắng đến xanh lá cây nhạt */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng chữ */
+        }
+        .contact-info {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-info:hover {
+            transform: translateY(-10px); /* Hiệu ứng di chuyển lên khi hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng bóng khi hover */
+        }
+        .contact-info p {
+            margin: 10px 0;
+            color: #333;
+        }
+        .contact-info p strong {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng chữ */
+        }
+        .footer-top {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+        .footer-top p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .footer-top form {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .footer-top input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+        .footer-top button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .footer-top button:hover {
+            background-color: #45a049;
+        }
+        .button {
+            background-color: transparent;
+            color: #fff;
+            width: 10em;
+            height: 2.9em;
+            border: #3654ff 0.2em solid;
+            border-radius: 20px;
+            text-align: right;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #3654ff;
+            cursor: pointer;
+        }
+        .button svg {
+            width: 1.6em;
+            margin: -0.2em 0.8em 1em;
+            position: absolute;
+            display: flex;
+            transition: all 0.6s ease;
+        }
+        .button:hover svg {
+            transform: translateX(5px);
+        }
+        .text {
+            margin: 0 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thông tin liên hệ</h1>
+    <div class="contact-info">
+        <p><strong>Tên:</strong> Trần Văn Tèo</p>
+        <p><strong>Email:</strong> tranvanteo@gmail.com</p>
+        <p><strong>Điện thoại:</strong> 0979204###</p>
+        <p><strong>Địa chỉ:</strong> Ấp 9A,......</p>
+    </div>
+    <div class="footer-top">
+        <p>NHẬN THÔNG TIN VỀ SẢN PHẨM MỚI NHẤT</p>
+        <p>Vui lòng nhập Email, chúng tôi sẽ gửi thông tin và báo giá ngay!</p>
+        <form onsubmit="return goToLink(event)">
+            <input type="email" placeholder="Nhập Email" required>
+            <button type="submit">Gửi</button>
+        </form>
+        <a href="index.html" class="button-link">
+            <button class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                </svg>
+                <div class="text">Trở lại</div>
+            </button>
+        </a>
+    </div>
+    <script>
+        function goToLink(event) {
+            event.preventDefault(); // Ngăn chặn hành động submit mặc định
+            window.location.href = "giveback.html"; // Liên kết đến file giveback.html
+        }
+    </script>
+</body>
+</html>
