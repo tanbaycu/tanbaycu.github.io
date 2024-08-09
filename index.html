@@ -152,18 +152,20 @@
                     top: 0;
                     left: 0;
                     right: 0;
-                    background-color: #f8f9fa;
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px;
                     z-index: 1000;
-                    padding: 10px 20px;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
+                }
+
+                main {
+                    padding: 20px;
                 }
 
 
                 body {
-                    padding-top: 120px;
+                    padding-top: 80px;
                     font-family: Arial, sans-serif;
                     margin: 0;
                 }
@@ -228,7 +230,7 @@
             </style>
             <style>
                 section {
-                    margin: 20px;
+                    margin: 20px 0;
                     padding: 20px;
                     border: 1px solid #ccc;
                     background-color: #f9f9f9;
@@ -244,7 +246,7 @@
                 .product {
                     display: inline-block;
                     width: 30%;
-                    margin: 10px;
+                    margin: 10px 0;
                     padding: 20px;
                     border: 1px solid #e0e0e0;
                     border-radius: 8px;
@@ -465,6 +467,12 @@
 
             <script src="script.js"></script>
             <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
                 .review {
                     margin-top: 20px;
                 }
@@ -505,22 +513,11 @@
                 }
             </style>
             <style>
-                header {
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 20px;
-                }
-
-                header {
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 20px;
-                }
-
                 .header-content {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    flex-wrap: wrap;
                 }
 
                 .logo {
@@ -535,6 +532,7 @@
 
                 .navbar {
                     margin-left: 20px;
+                    flex-direction: column;
                 }
 
                 .navbar-right .settings-button {
@@ -557,7 +555,7 @@
                 }
 
                 .nav-menu li {
-                    margin: 0 10px;
+                    margin: 5px 0;
                 }
 
                 .nav-menu li a {
@@ -566,6 +564,7 @@
                     text-align: center;
                     padding: 10px;
                     text-decoration: none;
+                    border-radius: 5px;
                 }
 
                 .nav-menu li a:hover {
@@ -609,6 +608,7 @@
                     display: none;
                     position: absolute;
                     right: 0;
+                    top: 100%;
                     background-color: #f9f9f9;
                     min-width: 160px;
                     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -710,7 +710,7 @@
                 }
 
                 .footer-top button {
-                    padding: 10px;
+                    padding: 10px 20px;
                     border: none;
                     background-color: #4CAF50;
                     color: #fff;
@@ -757,13 +757,15 @@
             <style>
                 .container {
                     width: 80%;
-                    margin: 50px auto;
+                    margin: 0 auto;
                     background-color: #fff;
                     padding: 20px;
                     border: 2px solid #0077cc;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     text-align: center;
-                    /* Căn giữa nội dung trong container */
+                    display: flex;
+                    flex-wrap: wrap;
+
                 }
 
                 h2 {
@@ -781,9 +783,8 @@
             <style>
                 .popup {
                     display: none;
-                    /* Hide initially */
                     position: fixed;
-                    z-index: 1;
+                    z-index: 1000;
                     left: 0;
                     top: 0;
                     width: 100%;
