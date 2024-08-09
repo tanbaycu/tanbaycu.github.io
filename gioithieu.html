@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="img/x-icon">
+    <meta name="description"
+        content="Trang Web Cây Cảnh - Cung cấp thông tin, mẹo làm vườn và bộ sưu tập cây cảnh phong phú.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Trang Web Cây Cảnh</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
-         body {
-            background: linear-gradient(to right, #ffffff, #b3ffb3); /* Gradient từ trắng đến xanh lá cây nhạt */
-            font-family: Arial, sans-serif;
+        body {
+            background: linear-gradient(to right, #ffffff, #b3ffb3);
+            /* Gradient từ trắng đến xanh lá cây nhạt */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            perspective: 1000px;
+            /* Thiết lập hiệu ứng 3D */
         }
+
         .content-wrapper {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
+            max-width: 1200px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            /* Hiệu ứng 3D */
         }
+
+        .content:hover {
+            transform: rotateY(5deg);
+            /* Hiệu ứng xoay 3D */
+        }
+
         .content {
             max-width: 800px;
             padding: 20px;
-            margin-right: 340px; /* Width of the profile card plus some margin */
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transform: rotateY(0);
+            /* Hiệu ứng 3D khi hover */
+            transition: box-shadow 0.3s, transform 0.3s;
         }
-        h1, h2 {
+
+        .content:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: rotateY(5deg);
+            /* Hiệu ứng xoay 3D khi hover */
+        }
+
+        h1,
+        h2 {
             font-family: 'Merriweather', serif;
+            color: #007bff;
+            /* Màu tiêu đề */
         }
+
         .section {
             padding: 20px;
             margin-bottom: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .section h2 {
-            color: #007bff;
+
+        .section:hover {
+            transform: translateY(-5px);
+            /* Hiệu ứng di chuyển lên khi hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+
         .profile-card {
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -51,153 +94,190 @@
             right: 20px;
             padding: 20px;
             z-index: 1000;
+            transform-style: preserve-3d;
         }
+
         .profile-card .avatar {
             margin-bottom: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 0.3s;
         }
+
+        .profile-card:hover .avatar {
+            transform: scale(1.1);
+            /* Hiệu ứng phóng to avatar khi hover */
+        }
+
         .profile-card .headings p {
             margin: 5px 0;
+            color: #434955;
         }
+
         .profile-card ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .profile-card li {
             padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1.5px dotted #6c757d;
+            transition: background-color 0.3s;
         }
+
+        .profile-card li:hover {
+            background-color: #f1f1f1;
+            /* Hiệu ứng đổi màu nền khi hover */
+        }
+
         .profile-card li:last-child {
             border-bottom: none;
         }
+
         .profile-card svg {
             margin-right: 8px;
         }
+
         hr {
             margin: 20px 0;
         }
-    </style>
-</head>
-<body>
 
-<div class="content-wrapper">
-    <div class="content">
-        <h1>Chào Mừng Đến Với Trang Web Cây Cảnh Của Chúng Tôi</h1>
-
-        <div class="section">
-            <h2>Về Chúng Tôi</h2>
-            <p>Chào mừng đến với trang web Cây Cảnh của chúng tôi, nguồn số một của bạn cho tất cả những gì liên quan đến chăm sóc cây, mẹo làm vườn và xu hướng mới nhất trong nghệ thuật trồng cây cảnh. Chúng tôi cam kết cung cấp cho bạn những thông tin và tài nguyên tốt nhất để giúp cây của bạn phát triển, tập trung vào sự bền vững, vẻ đẹp và sự đổi mới.</p>
-        </div>
-
-        <div class="section">
-            <h2>Sứ Mệnh Của Chúng Tôi</h2>
-            <p>Sứ mệnh của chúng tôi là truyền cảm hứng và giáo dục những người yêu cây ở mọi cấp độ để tạo ra những khu vườn đẹp và bền vững. Chúng tôi mong muốn trở thành nguồn tài nguyên đáng tin cậy cho kiến thức làm vườn, cung cấp những lời khuyên chuyên gia và sản phẩm chất lượng cao để giúp bạn tạo ra ốc đảo xanh riêng của mình.</p>
-        </div>
-
-        <div class="section">
-            <h2>Bộ Sưu Tập Của Chúng Tôi</h2>
-            <p>Chúng tôi cung cấp một loạt các cây cảnh, từ những loài phổ biến đến những loài kỳ lạ. Bộ sưu tập của chúng tôi được chọn lọc cẩn thận để đảm bảo sức khỏe và vẻ đẹp của từng cây chúng tôi cung cấp. Cho dù bạn đang tìm kiếm cây trong nhà, cây ngoài trời hay các sản phẩm đặc biệt, chúng tôi có thứ gì đó cho mọi người yêu cây.</p>
-        </div>
-
-        <div class="section">
-            <h2>Liên Hệ Với Chúng Tôi</h2>
-            <p>Nếu bạn có bất kỳ câu hỏi nào, cần lời khuyên hoặc muốn chia sẻ kinh nghiệm làm vườn của riêng mình, đừng ngần ngại liên hệ với chúng tôi. Chúng tôi ở đây để giúp bạn từng bước trên hành trình làm vườn của bạn. Liên hệ với chúng tôi qua điện thoại, email hoặc ghé thăm trung tâm vườn của chúng tôi.</p>
-        </div>
-    </div>
-</div>
-
-<div class="profile-card">
-    <div class="avatar">
-        <svg class="size-36 border-4 border-white rounded-full" id="avatar" viewBox="0 0 61.8 61.8" xmlns="http://www.w3.org/2000/svg">
-            <!-- SVG paths and shapes for the avatar -->
-        </svg>
-    </div>
-    <div class="headings">
-        <p class="text-xl font-serif font-semibold text-[#434955]">TÂN 7 CÚ</p>
-        <p class="text-sm font-semibold text-[#434955]">NHÀ PHÁT TRIỂN</p>
-    </div>
-    <ul>
-        <li class="inline-flex items-center justify-center text-xs font-semibold text-[#434955]">
-            <svg id="phone" viewBox="0 0 24 24" class="fill-stone-700" height="15" width="15" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG path for phone icon -->
-            </svg>
-            <p>Điện thoại: 0835117727</p>
-        </li>
-        <li class="inline-flex items-center justify-center text-xs font-semibold text-[#434955]">
-            <svg class="fill-stone-700" height="15" width="15" id="mail" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG path for mail icon -->
-            </svg>
-            <p>Gmail: tranminhtan4953@gmail.com</p>
-        </li>
-        <li class="inline-flex items-center justify-center text-xs font-semibold text-[#434955]">
-            <svg class="fill-stone-700" height="15" width="15" id="globe" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG path for globe icon -->
-            </svg>
-            <p>none</p>
-        </li>
-        <li class="inline-flex items-center justify-center text-xs font-semibold text-[#434955]">
-            <svg id="map" viewBox="0 0 16 16" class="fill-stone-700" height="15" width="15" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG path for map icon -->
-            </svg>
-            <p>ĐC: Ấp 9A, Mỹ Thành Nam, Cai Lậy, Tiền Giang</p>
-        </li>
-    </ul>
-    <hr class="w-full h-3 bg-[#58b0e0]">
-</div>
-<style>
-  
-        .profile-card {
-            position: absolute;
-            top: 0;
-            right: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            z-index: 1000;
-        }
-        .profile-card .headings {
-            margin-bottom: 10px;
-            animation: pulse 1.5s infinite; /* Áp dụng animation pulse */
-        }
-        .profile-card .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .profile-card .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .profile-card svg {
-            margin-right: 8px;
-        }
-        .profile-card p {
-            margin: 0;
-        }
-        .profile-card hr {
-            margin: 10px 0 0;
-            width: 100%;
-            height: 3px;
-            background-color: #58b0e0;
-        }
-        
         @keyframes pulse {
             0% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.5;
             }
+
             100% {
                 opacity: 1;
             }
         }
-        
-</style>
+
+        .profile-card .headings {
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+            /* Áp dụng animation pulse */
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                position: static;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                margin-right: 0;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content-wrapper">
+        <div class="content">
+            <h1>Chào Mừng Đến Với Trang Web Cây Cảnh Của Chúng Tôi</h1>
+
+            <div class="section">
+                <h2>Về Chúng Tôi</h2>
+                <p>Chào mừng đến với trang web Cây Cảnh của chúng tôi, nguồn số một của bạn cho tất cả những gì liên
+                    quan đến chăm sóc cây, mẹo làm vườn và xu hướng mới nhất trong nghệ thuật trồng cây cảnh. Chúng tôi
+                    cam kết cung cấp cho bạn những thông tin và tài nguyên tốt nhất để giúp cây của bạn phát triển, tập
+                    trung vào sự bền vững, vẻ đẹp và sự đổi mới.</p>
+            </div>
+
+            <div class="section">
+                <h2>Sứ Mệnh Của Chúng Tôi</h2>
+                <p>Sứ mệnh của chúng tôi là truyền cảm hứng và giáo dục những người yêu cây ở mọi cấp độ để tạo ra những
+                    khu vườn đẹp và bền vững. Chúng tôi mong muốn trở thành nguồn tài nguyên đáng tin cậy cho kiến thức
+                    làm vườn, cung cấp những lời khuyên chuyên gia và sản phẩm chất lượng cao để giúp bạn tạo ra ốc đảo
+                    xanh riêng của mình.</p>
+            </div>
+
+            <div class="section">
+                <h2>Bộ Sưu Tập Của Chúng Tôi</h2>
+                <p>Chúng tôi cung cấp một loạt các cây cảnh, từ những loài phổ biến đến những loài kỳ lạ. Bộ sưu tập của
+                    chúng tôi được chọn lọc cẩn thận để đảm bảo sức khỏe và vẻ đẹp của từng cây chúng tôi cung cấp. Cho
+                    dù bạn đang tìm kiếm cây trong nhà, cây ngoài trời hay các sản phẩm đặc biệt, chúng tôi có thứ gì đó
+                    cho mọi người yêu cây.</p>
+            </div>
+
+            <div class="section">
+                <h2>Liên Hệ Với Chúng Tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào, cần lời khuyên hoặc muốn chia sẻ kinh nghiệm làm vườn của riêng mình,
+                    đừng ngần ngại liên hệ với chúng tôi. Chúng tôi ở đây để giúp bạn từng bước trên hành trình làm vườn
+                    của bạn. Liên hệ với chúng tôi qua điện thoại, email hoặc ghé thăm trung tâm vườn của chúng tôi.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-card">
+        <div class="avatar">
+            <svg class="size-36 border-4 border-white rounded-full" id="avatar" viewBox="0 0 61.8 61.8"
+                xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG paths and shapes for the avatar -->
+            </svg>
+        </div>
+        <div class="headings">
+            <p class="text-xl font-serif font-semibold text-[#434955]">TÂN 7 CÚ</p>
+            <p class="text-sm font-semibold text-[#434955]">NHÀ PHÁT TRIỂN</p>
+        </div>
+        <ul>
+            <li class="contact-item text-xs font-semibold text-[#434955]">
+                <svg id="phone" viewBox="0 0 24 24" class="fill-stone-700" height="15" width="15"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- SVG path for phone icon -->
+                </svg>
+                <p>Điện thoại: 0835117727</p>
+            </li>
+            <li class="contact-item text-xs font-semibold text-[#434955]">
+                <svg class="fill-stone-700" height="15" width="15" id="mail" viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- SVG path for mail icon -->
+                </svg>
+                <p>Gmail: tranminhtan4953@gmail.com</p>
+            </li>
+            <li class="contact-item text-xs font-semibold text-[#434955]">
+                <svg class="fill-stone-700" height="15" width="15" id="globe" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- SVG path for globe icon -->
+                </svg>
+                <p>none</p>
+            </li>
+            <li class="contact-item text-xs font-semibold text-[#434955]">
+                <svg id="map" viewBox="0 0 16 16" class="fill-stone-700" height="15" width="15"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <!-- SVG path for map icon -->
+                </svg>
+                <p>ĐC: Ấp 9A, Mỹ Thành Nam, Cai Lậy, Tiền Giang</p>
+            </li>
+        </ul>
+        <hr class="w-full h-3 bg-[#58b0e0]">
+    </div>
+
 </body>
+
 </html>
