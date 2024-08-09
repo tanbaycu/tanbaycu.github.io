@@ -1,92 +1,55 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang cảm ơn với hiệu ứng trái tim bay lên liên tục khi trang tải.">
+    <meta name="keywords" content="cảm ơn, phản hồi, trang web, hiệu ứng trái tim">
+    <meta name="author" content="Tên của bạn">
     <title>Lời Cảm Ơn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-    background: linear-gradient(135deg, #74ebd5, #acb6e5);
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
         .thank-you-container {
             text-align: center;
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            max-width: 500px;
+            max-width: 90%;
             width: 100%;
             position: relative;
+            overflow: hidden;
         }
+
         .thank-you-container h1 {
             color: #4CAF50;
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
+
         .thank-you-container p {
             font-size: 1.2em;
             margin-bottom: 20px;
         }
+
         .thank-you-container .heart-icon {
             color: #4CAF50;
-            font-size: 5em;
+            font-size: 4em;
             margin-bottom: 20px;
-            position: relative;
-            animation: heartbeat 1s infinite;
         }
-        .thank-you-container .heart-icon::before, .thank-you-container .heart-icon::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            box-sizing: border-box;
-            animation: pulse 2s linear infinite;
-        }
-        .thank-you-container .heart-icon::before {
-            border-top-color: #ff6347; /* Màu đỏ */
-            animation-delay: 0s;
-        }
-        .thank-you-container .heart-icon::after {
-            border-top-color: #4682b4; /* Màu xanh da trời */
-            animation-delay: 1s;
-        }
-        @keyframes pulse {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-        @keyframes heartbeat {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        .thank-you-container button {
+
+        button {
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -95,68 +58,105 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
         }
-        .thank-you-container button:hover {
+
+        button:hover {
             background-color: #45a049;
-            box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
         }
-        .thank-you-container button:focus {
+
+        button:focus {
             outline: none;
         }
-        .heart-icon {
-    color: #4CAF50;
-    font-size: 5em;
-    margin-bottom: 20px;
-    position: relative;
-    animation: heartbeat 1s infinite;
-}
-.heart-icon::before, .heart-icon::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    box-sizing: border-box;
-    animation: pulse 2s linear infinite;
-}
-@keyframes pulse {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2);
-        opacity: 0;
-    }
-}
-@keyframes heartbeat {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
+        .heart-icon::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: #ff6347;
+            /* Màu đỏ */
+            opacity: 0;
+            pointer-events: none;
+            animation: none;
+        }
+
+        @keyframes fly-heart {
+            0% {
+                transform: scale(0) translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) translateY(-300px);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-container {
+                padding: 20px;
+            }
+
+            .thank-you-container h1 {
+                font-size: 1.5em;
+            }
+
+            .thank-you-container p {
+                font-size: 1em;
+            }
+
+            .thank-you-container .heart-icon {
+                font-size: 3em;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="thank-you-container">
         <div class="heart-icon">
             <i class="fas fa-heart"></i>
         </div>
         <h1>Cảm ơn bạn!</h1>
-        <p>Chúng tôi rất biết ơn về phản hồi của bạn. Điều này sẽ giúp chúng tôi cải thiện dịch vụ và mang đến trải nghiệm tốt hơn cho bạn và mọi người.</p>
+        <p>Chúng tôi rất biết ơn về phản hồi của bạn. Điều này sẽ giúp chúng tôi cải thiện dịch vụ và mang đến trải
+            nghiệm tốt hơn cho bạn và mọi người.</p>
         <button onclick="window.location.href='index.html'">Quay lại trang chủ</button>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.thank-you-container');
+
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.style.position = 'absolute';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.bottom = '0';
+                heart.style.width = '15px'; /* Kích thước nhỏ hơn */
+                heart.style.height = '15px'; /* Kích thước nhỏ hơn */
+                heart.style.backgroundColor = '#ff6347';
+                heart.style.borderRadius = '50%';
+                heart.style.opacity = '0.7';
+                heart.style.pointerEvents = 'none';
+                heart.style.animation = `fly-heart ${Math.random() * 3 + 2}s ease forwards`;
+                container.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+
+            // Create hearts every second
+            setInterval(createHeart, 500);
+        });
+    </script>
 </body>
+
 </html>
