@@ -43,6 +43,11 @@
             filter: blur(4px);
         }
 
+        .qr-container .qr-section:not(.active) {
+            filter: blur(4px);
+            opacity: 0.5;
+        }
+
         section {
             margin: 10px;
             position: relative;
@@ -150,11 +155,11 @@
 
         <div class="qr-container" id="qr-container">
             <!-- QR Liên hệ -->
-            <section id="qr-contact">
+            <section id="qr-contact" class="qr-section">
                 <h2>QR Liên hệ</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-contact.png" alt="QR Liên hệ"
-                        onclick="showPopup('popup-contact')">
+                        onclick="showPopup('popup-contact', 'qr-contact')">
                     <div class="popup" id="popup-contact">
                         <span class="close-btn" onclick="hidePopup('popup-contact')">&times;</span>
                         <h2>Thông tin Liên hệ</h2>
@@ -166,11 +171,11 @@
             </section>
 
             <!-- QR Facebook -->
-            <section id="qr-facebook">
+            <section id="qr-facebook" class="qr-section">
                 <h2>QR Facebook</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-facebook.png" alt="QR Facebook"
-                        onclick="showPopup('popup-facebook')">
+                        onclick="showPopup('popup-facebook', 'qr-facebook')">
                     <div class="popup" id="popup-facebook">
                         <span class="close-btn" onclick="hidePopup('popup-facebook')">&times;</span>
                         <h2>Thông tin Facebook</h2>
@@ -181,11 +186,11 @@
             </section>
 
             <!-- QR Zalo -->
-            <section id="qr-zalo">
+            <section id="qr-zalo" class="qr-section">
                 <h2>QR Zalo</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-zalo.png" alt="QR Zalo"
-                        onclick="showPopup('popup-zalo')">
+                        onclick="showPopup('popup-zalo', 'qr-zalo')">
                     <div class="popup" id="popup-zalo">
                         <span class="close-btn" onclick="hidePopup('popup-zalo')">&times;</span>
                         <h2>Thông tin Zalo</h2>
@@ -196,11 +201,11 @@
             </section>
 
             <!-- QR YouTube -->
-            <section id="qr-youtube">
+            <section id="qr-youtube" class="qr-section">
                 <h2>QR YouTube</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-youtube.png" alt="QR YouTube"
-                        onclick="showPopup('popup-youtube')">
+                        onclick="showPopup('popup-youtube', 'qr-youtube')">
                     <div class="popup" id="popup-youtube">
                         <span class="close-btn" onclick="hidePopup('popup-youtube')">&times;</span>
                         <h2>Thông tin YouTube</h2>
@@ -212,11 +217,11 @@
             </section>
 
             <!-- QR GitHub -->
-            <section id="qr-github">
+            <section id="qr-github" class="qr-section">
                 <h2>QR GitHub</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-github.png" alt="QR GitHub"
-                        onclick="showPopup('popup-github')">
+                        onclick="showPopup('popup-github', 'qr-github')">
                     <div class="popup" id="popup-github">
                         <span class="close-btn" onclick="hidePopup('popup-github')">&times;</span>
                         <h2>Thông tin GitHub</h2>
@@ -227,11 +232,11 @@
             </section>
 
             <!-- QR Telegram -->
-            <section id="qr-telegram">
+            <section id="qr-telegram" class="qr-section">
                 <h2>QR Telegram</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-telegram.png" alt="QR Telegram"
-                        onclick="showPopup('popup-telegram')">
+                        onclick="showPopup('popup-telegram', 'qr-telegram')">
                     <div class="popup" id="popup-telegram">
                         <span class="close-btn" onclick="hidePopup('popup-telegram')">&times;</span>
                         <h2>Thông tin Telegram</h2>
@@ -242,11 +247,11 @@
             </section>
 
             <!-- QR Thanh toán -->
-            <section id="qr-payment">
+            <section id="qr-payment" class="qr-section">
                 <h2>QR Thanh toán</h2>
                 <div class="qr-section">
                     <img src="https://tanbaycu.github.io/qrboots/qr-payment.png" alt="QR Thanh toán"
-                        onclick="showPopup('popup-payment')">
+                        onclick="showPopup('popup-payment', 'qr-payment')">
                     <div class="popup" id="popup-payment">
                         <span class="close-btn" onclick="hidePopup('popup-payment')">&times;</span>
                         <h2>Thông tin Thanh toán</h2>
@@ -256,10 +261,10 @@
             </section>
 
             <!-- QR Key -->
-            <section id="qr-key">
+            <section id="qr-key" class="qr-section">
                 <h2>QR Key</h2>
                 <div class="qr-section">
-                    <img src="URL_QR_KEY" alt="QR Key" onclick="showPopup('popup-key')">
+                    <img src="URL_QR_KEY" alt="QR Key" onclick="showPopup('popup-key', 'qr-key')">
                     <div class="popup" id="popup-key">
                         <span class="close-btn" onclick="hidePopup('popup-key')">&times;</span>
                         <h2>Thông tin Key</h2>
@@ -274,16 +279,21 @@
     <div class="overlay" id="overlay" onclick="hideAllPopups()"></div>
 
     <script>
-        function showPopup(id) {
-            document.getElementById('qr-container').classList.add('muted');
+        function showPopup(popupId, sectionId) {
+            document.querySelectorAll('.qr-section').forEach(section => {
+                section.classList.add('muted');
+            });
+            document.getElementById(sectionId).classList.remove('muted');
+            document.getElementById(popupId).classList.add('show');
             document.getElementById('overlay').classList.add('show');
-            document.getElementById(id).classList.add('show');
         }
 
-        function hidePopup(id) {
-            document.getElementById(id).classList.remove('show');
+        function hidePopup(popupId) {
+            document.getElementById(popupId).classList.remove('show');
             document.getElementById('overlay').classList.remove('show');
-            document.getElementById('qr-container').classList.remove('muted');
+            document.querySelectorAll('.qr-section').forEach(section => {
+                section.classList.remove('muted');
+            });
         }
 
         function hideAllPopups() {
@@ -292,7 +302,9 @@
                 popup.classList.remove('show');
             });
             document.getElementById('overlay').classList.remove('show');
-            document.getElementById('qr-container').classList.remove('muted');
+            document.querySelectorAll('.qr-section').forEach(section => {
+                section.classList.remove('muted');
+            });
         }
     </script>
 </body>
