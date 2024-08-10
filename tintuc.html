@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +7,7 @@
     <meta name="keywords" content="tin tức, mai vàng, cây cảnh, chăm sóc cây, nhà vườn">
     <meta name="author" content="Nhà vườn Chín Tèo">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
     <title>Tin tức nổi bật</title>
     <style>
         body {
@@ -17,7 +17,6 @@
             margin: 0;
             padding-bottom: 60px;
         }
-
         h1 {
             text-align: center;
             color: #333;
@@ -26,11 +25,9 @@
             font-family: 'Montserrat', sans-serif;
             text-decoration: underline;
         }
-
         h1:hover {
             color: #4CAF50;
         }
-
         .news-item {
             margin-bottom: 20px;
             border-bottom: 1px solid #ccc;
@@ -42,30 +39,25 @@
             align-items: center;
             flex-wrap: wrap;
         }
-
         .news-item:hover {
             transform: rotateY(10deg);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .news-item img {
             margin-right: 10px;
             max-width: 150px;
             height: auto;
             transition: transform 0.3s;
         }
-
         .news-item img:hover {
             transform: scale(1.1);
         }
-
         .dropdown {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1;
         }
-
         .dropbtn {
             background-color: #4CAF50;
             color: white;
@@ -77,11 +69,9 @@
             border-radius: 4px;
             position: relative;
         }
-
         .dropbtn:hover {
             background-color: #3e8e41;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -96,12 +86,10 @@
             transition: opacity 0.5s ease-in-out;
             opacity: 0;
         }
-
         .dropdown:hover .dropdown-content {
             display: block;
             opacity: 1;
         }
-
         .dropdown-content a {
             color: black;
             padding: 12px 16px;
@@ -109,11 +97,9 @@
             display: block;
             transition: background-color 0.3s;
         }
-
         .dropdown-content a:hover {
             background-color: #f1f1f1;
         }
-
         footer {
             text-align: center;
             background-color: #333;
@@ -126,29 +112,11 @@
         }
     </style>
 </head>
-
 <body>
     <h1 onclick="reloadPage();">Tin tức nổi bật</h1>
 
     <div id="news-container">
-        <!-- Nội dung tin tức sẽ được thay đổi bởi JavaScript -->
-        <div class="news-item">
-            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 1">
-            <h2><a href="https://example.com/article1" target="_blank" rel="noopener">Tiêu đề bài báo 1</a></h2>
-            <p>Mô tả ngắn về bài báo 1.</p>
-        </div>
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 2">
-            <h2><a href="https://example.com/article2" target="_blank" rel="noopener">Tiêu đề bài báo 2</a></h2>
-            <p>Mô tả ngắn về bài báo 2.</p>
-        </div>
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/150" alt="Ảnh minh họa bài báo 3">
-            <h2><a href="https://example.com/article3" target="_blank" rel="noopener">Tiêu đề bài báo 3</a></h2>
-            <p>Mô tả ngắn về bài báo 3.</p>
-        </div>
+        <!-- Nội dung tin tức sẽ được tải qua JavaScript -->
     </div>
 
     <!-- Dropdown và Footer sections -->
@@ -166,26 +134,26 @@
     </footer>
 
     <script>
-        function reloadPage() {
-            location.reload(); // Reload trang
-        }
-
-        // Hàm để tải lại dữ liệu tin tức từ server
-        function reloadNews() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+        function fetchNews() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Cập nhật nội dung tin tức
-                    document.getElementById("news-container").innerHTML = this.responseText;
+                    document.getElementById('news-container').innerHTML = this.responseText;
                 }
             };
-            xhttp.open("GET", "news.php", true); // Thay đổi đường dẫn đến script xử lý cập nhật tin tức
-            xhttp.send();
+            xhr.open('GET', 'news.php', true);
+            xhr.send();
         }
 
-        // Tự động gọi hàm reloadNews() sau mỗi 5 phút (300,000 miligiây)
-        setInterval(reloadNews, 300000); // Thay đổi thời gian cập nhật tại đây nếu cần
+        // Tự động gọi hàm fetchNews() sau mỗi 5 phút (300,000 miligiây)
+        setInterval(fetchNews, 300000); // Thay đổi thời gian cập nhật tại đây nếu cần
+
+        // Gọi fetchNews ngay khi trang được tải
+        fetchNews();
+
+        function reloadPage() {
+            location.reload(); // Tải lại trang
+        }
     </script>
 </body>
-
 </html>
