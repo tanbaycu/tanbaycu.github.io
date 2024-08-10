@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="form yêu cầu thanh toán.">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Giá Liên Hệ</title>
+    <style>
+        /* Toàn bộ giao diện */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            width: 100%;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            color: #333;
+            overflow: hidden;
+        }
+
+        .form h1 {
+            margin: 0 0 20px;
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+        }
+
+        .flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form label {
+            position: relative;
+        }
+
+        .form input,
+        .form textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            color: #333;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form input:focus,
+        .form textarea:focus {
+            border-color: #6e8efb;
+            outline: none;
+            box-shadow: 0 0 8px rgba(110, 142, 251, 0.3);
+        }
+
+        .form label span {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #aaa;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form input:focus+span,
+        .form textarea:focus+span,
+        .form input:not(:placeholder-shown)+span,
+        .form textarea:not(:placeholder-shown)+span {
+            top: -12px;
+            left: 15px;
+            font-size: 0.75em;
+            color: #6e8efb;
+        }
+
+        .form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .fancy {
+            background-color: #6e8efb;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        .fancy:hover,
+        .fancy:focus {
+            background-color: #5b7aff;
+            box-shadow: 0 4px 10px rgba(110, 142, 251, 0.3);
+        }
+
+        .notification,
+        .redirect {
+            display: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        .notification {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .redirect {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .notification.show,
+        .redirect.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form class="form" id="contactForm">
+            <h1>Contact Us</h1>
+            <div class="flex">
+                <label>
+                    <input class="input" type="text" placeholder=" " name="firstName" required>
+                    <span>First Name</span>
+                </label>
+                <label>
+                    <input class="input" type="text" placeholder=" " name="lastName" required>
+                    <span>Last Name</span>
+                </label>
+            </div>
+            <label>
+                <input class="input" type="email" placeholder=" " name="email" required>
+                <span>Email</span>
+            </label>
+            <label>
+                <input class="input" type="tel" placeholder=" " name="contactNumber" required>
+                <span>Contact Number</span>
+            </label>
+            <label>
+                <textarea class="input" placeholder=" " name="message" required></textarea>
+                <span>Message</span>
+            </label>
+            <button type="submit" class="fancy">Submit</button>
+            <div class="notification" id="notification">
+                Yêu cầu của bạn đã được gửi thành công, hãy chờ tin nhắn mới nhất từ chúng tôi. Trân trọng.
+            </div>
+            <div class="redirect" id="redirect">
+                Chuyển về trang chủ sau 30 giây...
+            </div>
+        </form>
+    </main>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Ngăn chặn gửi form thực sự
+
+            // Hiển thị thông báo
+            document.getElementById('notification').classList.add('show');
+
+            // Hiển thị thông báo chuyển trang
+            document.getElementById('redirect').classList.add('show');
+
+            // Xóa form sau khi gửi
+            this.reset();
+
+            // Chuyển hướng về trang chủ sau 30 giây
+            setTimeout(function () {
+                window.location.href = 'index.html'; // Thay đổi 'index.html' thành URL trang chính của bạn
+            }, 30000);
+        });
+    </script>
+</body>
+
+</html>
