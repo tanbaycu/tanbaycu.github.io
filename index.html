@@ -585,31 +585,6 @@
                 .next {
                     right: 10px;
                 }
-
-
-
-
-
-                /* Đối với màn hình nhỏ hơn 768px */
-                @media (max-width: 768px) {
-                    body {
-                        font-size: 14px;
-                    }
-                }
-
-                /* Đối với màn hình từ 768px đến 1200px */
-                @media (min-width: 768px) and (max-width: 1200px) {
-                    body {
-                        font-size: 16px;
-                    }
-                }
-
-                /* Đối với màn hình lớn hơn 1200px */
-                @media (min-width: 1200px) {
-                    body {
-                        font-size: 18px;
-                    }
-                }
             </style>
             <style>
                 .logo-container {
@@ -1106,6 +1081,48 @@
                 .submitted-reviews li {
                     border-bottom: 1px solid #ccc;
                     padding: 10px 0;
+                }
+
+                /* Responsive Layouts */
+                @media (max-width: 1200px) {
+                    .container {
+                        width: 95%;
+                        padding: 10px;
+                    }
+                }
+
+                @media (max-width: 992px) {
+                    .container {
+                        flex-direction: column;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .popup-content {
+                        width: 90%;
+                        padding: 15px;
+                    }
+
+                    .chat-container {
+                        width: auto;
+                        bottom: 5px;
+                        right: 5px;
+                    }
+
+                    .chat-container h1 {
+                        font-size: 12px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+
+                    .popup-content {
+                        width: 95%;
+                        padding: 10px;
+                    }
                 }
             </style>
             <style>
