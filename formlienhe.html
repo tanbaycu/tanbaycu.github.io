@@ -181,20 +181,20 @@
     </main>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Ngăn chặn gửi form thực sự
+            event.preventDefault(); 
 
-            // Hiển thị thông báo
+         
             document.getElementById('notification').classList.add('show');
 
-            // Hiển thị thông báo chuyển trang
+         
             document.getElementById('redirect').classList.add('show');
 
-            // Xóa form sau khi gửi
+           
             this.reset();
 
-            // Chuyển hướng về trang chủ sau 30 giây
+            
             setTimeout(function () {
-                window.location.href = 'index.html'; // Thay đổi 'index.html' thành URL trang chính của bạn
+                window.location.href = 'index.html'; 
             }, 30000);
         });
     </script>
