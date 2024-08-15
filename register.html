@@ -4,116 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Đăng ký</title>
     <style>
         body {
-            background: linear-gradient(to right, #ffffff, #b3ffb3);
-            /* Gradient từ trắng đến xanh lá cây nhạt */
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f2f1, #b9fbc0);
+            /* Gradient màu xanh lá cây sáng để tạo cảm giác tươi mới */
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            color: #333;
         }
 
         .card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #4caf50;
+            /* Viền xanh lá cây để nổi bật hơn */
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 128, 0, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 0.3;
         }
 
         .card h1 {
-            color: #00796b;
-            /* Màu xanh đậm */
+            color: #2c6e49;
+            /* Màu xanh lá cây đậm để nổi bật */
+            font-size: 36px;
             margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 1;
+            position: relative;
+            text-shadow: 1px 1px 5px rgba(0, 128, 0, 0.5);
+            /* Hiệu ứng bóng để làm tiêu đề nổi bật hơn */
         }
 
         .card label {
             display: block;
             text-align: left;
             width: 100%;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+            z-index: 1;
+            position: relative;
         }
 
         .card input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #4caf50;
+            /* Màu xanh lá cây để giữ đồng bộ */
+            border-radius: 10px;
             box-sizing: border-box;
+            font-size: 16px;
+            background: #f9f9f9;
+            color: #333;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card input:focus {
+            border-color: #388e3c;
+            /* Xanh lá cây đậm hơn khi focus */
+            background: #fff;
+            outline: none;
+        }
+
+        .card .error {
+            color: #e53935;
+            /* Màu đỏ để nổi bật thông báo lỗi */
+            font-size: 0.875em;
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
         }
 
         .card button {
-            background-color: #00796b;
-            /* Màu xanh đậm */
-            color: white;
+            background: linear-gradient(45deg, #43a047, #66bb6a);
+            /* Gradient màu xanh lá cây sáng để nổi bật */
+            color: #fff;
             border: none;
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 15px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s;
+            border-radius: 10px;
+            transition: background 0.3s ease, transform 0.2s;
             width: 100%;
+            font-weight: 700;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+            /* Hiệu ứng bóng đổ để làm nút bấm nổi bật hơn */
         }
 
         .card button:hover {
-            background-color: #004d40;
-            /* Màu xanh đậm hơn khi hover */
-            transform: translateY(-2px);
+            background: linear-gradient(45deg, #66bb6a, #43a047);
+            transform: translateY(-3px);
         }
 
-        .signupBtn {
-            width: 120px;
-            height: 40px;
-            border-radius: 30px;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-left: 20px;
-            gap: 9px;
-            color: white;
-            background: linear-gradient(to right, rgb(128, 128, 255), rgb(183, 128, 255));
+        .card p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            z-index: 1;
             position: relative;
-            cursor: pointer;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.212);
         }
 
-        .arrow {
-            position: absolute;
-            right: 7.5px;
-            background-color: rgb(255, 255, 255);
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+        .card p a {
+            color: #4caf50;
+            /* Màu xanh lá cây để giữ tính đồng bộ với chủ đề */
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
         }
 
-        .signupBtn:hover .arrow {
-            animation: slide-in-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }
-
-        @keyframes slide-in-left {
-            0% {
-                transform: translateX(-10px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        .card p a:hover {
+            color: #388e3c;
+            /* Xanh lá cây đậm hơn khi hover */
         }
     </style>
 </head>
@@ -126,37 +158,47 @@
             <input type="text" id="username" placeholder="Nhập tên đăng nhập" required>
             <label for="password">Mật khẩu:</label>
             <input type="password" id="password" placeholder="Nhập mật khẩu" required>
-            <button type="submit" class="signupBtn">
-                Đăng ký
-                <span class="arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"
-                        fill="rgb(183, 128, 255)">
-                        <path
-                            d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
-                        </path>
-                    </svg>
-                </span>
-            </button>
+            <label for="confirmPassword">Xác nhận mật khẩu:</label>
+            <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+            <div id="formError" class="error"></div>
+            <div id="passwordStrength" class="error"></div>
+            <button type="submit">Đăng ký</button>
             <p>Đã có tài khoản, hãy <a href="login.html">đăng nhập tại đây</a>.</p>
         </form>
     </div>
     <script>
         document.getElementById('registerForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Ngăn chặn hành động mặc định của form
+            event.preventDefault();
             register();
         });
 
         function register() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
 
-            if (username.trim() === '' || password.trim() === '') {
-                alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
+            var formError = document.getElementById('formError');
+            var passwordStrength = document.getElementById('passwordStrength');
+            formError.textContent = '';
+            passwordStrength.textContent = '';
+
+            if (username.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+                formError.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                formError.textContent = 'Mật khẩu không khớp.';
+                return;
+            }
+
+            if (!isPasswordStrong(password)) {
+                passwordStrength.textContent = 'Mật khẩu cần ít nhất 6 ký tự.';
                 return;
             }
 
             if (localStorage.getItem(username)) {
-                alert('Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.');
+                formError.textContent = 'Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.';
                 return;
             }
 
@@ -170,12 +212,15 @@
             };
             localStorage.setItem(username, JSON.stringify(userInfo));
 
-            alert('Đăng ký thành công! Đăng nhập để tiếp tục.');
-            window.location.href = 'login.html';
+            document.querySelector('.card').innerHTML = '<h1>Đăng ký thành công!</h1><p>Đăng nhập để tiếp tục.</p><a href="login.html" class="signupBtn">Đăng nhập</a>';
         }
 
         function generateUserId() {
             return Math.floor(Math.random() * 1000000);
+        }
+
+        function isPasswordStrong(password) {
+            return password.length >= 6;
         }
     </script>
 </body>
