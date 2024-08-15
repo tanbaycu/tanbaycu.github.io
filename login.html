@@ -5,106 +5,241 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
         body {
-            background: linear-gradient(to right, #ffffff, #b3ffb3);
-            /* Gradient từ trắng đến xanh lá cây nhạt */
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f2f1, #b9fbc0);
+            /* Gradient màu xanh lá cây sáng */
+            font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            color: #333;
         }
 
         .card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #4caf50;
+            /* Viền xanh lá cây nổi bật */
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 128, 0, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 0.3;
         }
 
         .card h1 {
-            color: #00796b;
-            /* Màu xanh đậm */
+            color: #2c6e49;
+            /* Màu xanh lá cây đậm */
+            font-size: 36px;
             margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 1;
+            position: relative;
+            text-shadow: 1px 1px 5px rgba(0, 128, 0, 0.5);
+            /* Hiệu ứng bóng */
         }
 
         .card label {
             display: block;
             text-align: left;
             width: 100%;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+            z-index: 1;
+            position: relative;
         }
 
         .card input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #4caf50;
+            /* Viền xanh lá cây */
+            border-radius: 10px;
             box-sizing: border-box;
+            font-size: 16px;
+            background: #f9f9f9;
+            color: #333;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card input:focus {
+            border-color: #388e3c;
+            /* Xanh lá cây đậm hơn khi focus */
+            background: #fff;
+            outline: none;
+        }
+
+        .card .error {
+            color: #e53935;
+            /* Màu đỏ cho thông báo lỗi */
+            font-size: 0.875em;
+            margin-bottom: 20px;
+            z-index: 1;
+            position: relative;
         }
 
         .card button {
-            background-color: #00796b;
-            /* Màu xanh đậm */
-            color: white;
+            background: linear-gradient(45deg, #43a047, #66bb6a);
+            /* Gradient xanh lá cây sáng */
+            color: #fff;
             border: none;
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 15px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s;
+            border-radius: 10px;
+            transition: background 0.3s ease, transform 0.2s;
             width: 100%;
+            font-weight: 700;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+            /* Hiệu ứng bóng đổ */
         }
 
         .card button:hover {
-            background-color: #004d40;
-            /* Màu xanh đậm hơn khi hover */
-            transform: translateY(-2px);
+            background: linear-gradient(45deg, #66bb6a, #43a047);
+            transform: translateY(-3px);
+        }
+
+        .card p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card p a {
+            color: #4caf50;
+            /* Màu xanh lá cây */
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .card p a:hover {
+            color: #388e3c;
+            /* Xanh lá cây đậm hơn khi hover */
+        }
+
+        .signupBtn {
+            width: 120px;
+            height: 40px;
+            border-radius: 30px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+            gap: 9px;
+            color: white;
+            background: linear-gradient(to right, rgb(128, 128, 255), rgb(183, 128, 255));
+            position: relative;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.212);
+        }
+
+        .arrow {
+            position: absolute;
+            right: 7.5px;
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .signupBtn:hover .arrow {
+            animation: slide-in-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @keyframes slide-in-left {
+            0% {
+                transform: translateX(-10px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            /* Khoảng cách với trường nhập mật khẩu */
+            font-size: 14px;
+            /* Kích thước chữ */
+            color: #333;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            /* Kích thước vừa vặn hơn */
+            height: 18px;
+            /* Kích thước vừa vặn hơn */
+            border: 2px solid #00796b;
+            /* Màu viền của hộp kiểm */
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .remember-me input[type="checkbox"]:checked {
+            background-color: #00796b;
+            /* Màu nền khi được chọn */
+            border-color: #00796b;
+        }
+
+        .remember-me input[type="checkbox"]:checked::after {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .remember-me label {
+            margin-left: 8px;
+            /* Khoảng cách giữa checkbox và nhãn */
         }
     </style>
-    <script>
-        function login() {
-            var username = document.getElementById('username').value.trim();
-            var password = document.getElementById('password').value.trim();
-
-            if (!username || !password) {
-                alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
-                return;
-            }
-
-            // Lấy thông tin người dùng từ LocalStorage
-            var userInfoStr = localStorage.getItem(username);
-            if (userInfoStr) {
-                var userInfo = JSON.parse(userInfoStr);
-                // Kiểm tra trạng thái tài khoản
-                if (userInfo.status === 'suspended') {
-                    alert('Tài khoản của bạn đã bị tạm dừng. Vui lòng liên hệ với người quản trị.');
-                    return;
-                }
-                // Kiểm tra mật khẩu (chỉ ví dụ, bạn nên thực hiện kiểm tra thực tế ở phía máy chủ)
-                if (password === userInfo.password) {
-                    // Lưu thông tin người dùng vào localStorage
-                    localStorage.setItem('userInfo', JSON.stringify(userInfo));
-
-                    // Chuyển hướng đến trang account.html
-                    window.location.href = 'index.html';
-                } else {
-                    alert('Mật khẩu không đúng. Vui lòng thử lại.');
-                }
-            } else {
-                alert('Tên đăng nhập không tồn tại. Vui lòng đăng ký trước khi đăng nhập.');
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -115,6 +250,11 @@
             <input type="text" id="username" placeholder="Nhập tên đăng nhập" required>
             <label for="password">Mật khẩu:</label>
             <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Nhớ tên đăng nhập</label>
+            </div>
+            <div id="formError" class="error"></div> <!-- Thêm thông báo lỗi -->
             <button type="submit" class="signupBtn">
                 Đăng nhập
                 <span class="arrow">
@@ -127,59 +267,62 @@
                 </span>
             </button>
 
-
             <p>Nếu bạn chưa có tài khoản, hãy <a href="register.html">đăng ký tại đây</a>.</p>
             <p>Nếu bạn quên mật khẩu, hãy <a href="resetpassword.html">bấm vào đây</a> để đặt lại mật khẩu.</p>
-
         </form>
 
+
     </div>
+
 </body>
-<style>
-    .signupBtn {
-        width: 120px;
-        height: 40px;
-        border-radius: 30px;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 20px;
-        gap: 9px;
-        color: white;
-        background: linear-gradient(to right, rgb(128, 128, 255), rgb(183, 128, 255));
-        position: relative;
-        cursor: pointer;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.212);
-    }
 
-    .arrow {
-        position: absolute;
-        right: 7.5px;
-        background-color: rgb(255, 255, 255);
-        width: 25px;
-        height: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+<script>
+    function login() {
+        var username = document.getElementById('username').value.trim();
+        var password = document.getElementById('password').value.trim();
+        var rememberMe = document.getElementById('rememberMe').checked;
+        var formError = document.getElementById('formError');
 
-    .signupBtn:hover .arrow {
-        animation: slide-in-left 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
+        formError.textContent = ''; // Xóa thông báo lỗi trước đó
 
-    @keyframes slide-in-left {
-        0% {
-            transform: translateX(-10px);
-            opacity: 0;
+        if (!username || !password) {
+            formError.textContent = 'Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.';
+            return;
         }
 
-        100% {
-            transform: translateX(0);
-            opacity: 1;
+        var userInfoStr = localStorage.getItem(username);
+        if (userInfoStr) {
+            var userInfo = JSON.parse(userInfoStr);
+            if (userInfo.status === 'suspended') {
+                formError.textContent = 'Tài khoản của bạn đã bị tạm dừng. Vui lòng liên hệ với người quản trị.';
+                return;
+            }
+            if (password === userInfo.password) {
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                if (rememberMe) {
+                    localStorage.setItem('rememberedUser', username);
+                } else {
+                    localStorage.removeItem('rememberedUser'); // Xóa ghi nhớ nếu checkbox không được chọn
+                }
+                window.location.href = 'index.html'; // Chuyển hướng đến trang chính
+            } else {
+                formError.textContent = 'Mật khẩu không đúng. Vui lòng thử lại.';
+            }
+        } else {
+            formError.textContent = 'Tên đăng nhập không tồn tại. Vui lòng đăng ký trước khi đăng nhập.';
         }
     }
-</style>
+
+    // Tự động điền tên đăng nhập nếu được nhớ
+    window.onload = function () {
+        var rememberedUser = localStorage.getItem('rememberedUser');
+        if (rememberedUser) {
+            document.getElementById('username').value = rememberedUser;
+            document.getElementById('rememberMe').checked = true;
+        }
+    }
+
+
+</script>
 
 </html>
