@@ -1,287 +1,200 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Trang Web Cây Cảnh - Cung cấp thông tin, mẹo làm vườn và bộ sưu tập cây cảnh phong phú.">
+    <meta name="description" content="Trang Web Cây Cảnh - Cung cấp thông tin, mẹo làm vườn và bộ sưu tập cây cảnh phong phú.">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Trang Web Cây Cảnh</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+    <title>About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, #ffffff, #b3ffb3);
-            /* Gradient từ trắng đến xanh lá cây nhạt */
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Raleway', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            perspective: 1000px;
-            /* Thiết lập hiệu ứng 3D */
+            background: linear-gradient(135deg, #2d2d2d, #4a4a4a);
+            color: #f0f0f0;
+            overflow-x: hidden;
         }
 
-        .content-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
+        .header {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            width: 90%;
             max-width: 1200px;
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-            /* Hiệu ứng 3D */
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .content:hover {
-            transform: rotateY(5deg);
-            /* Hiệu ứng xoay 3D */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 150, 0.1), rgba(0, 255, 255, 0.1));
+            opacity: 0.5;
+            transform: rotate(-30deg);
+            z-index: 1;
         }
 
         .content {
-            max-width: 800px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            transform: rotateY(0);
-            /* Hiệu ứng 3D khi hover */
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-
-        .content:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transform: rotateY(5deg);
-            /* Hiệu ứng xoay 3D khi hover */
-        }
-
-        h1,
-        h2 {
-            font-family: 'Merriweather', serif;
-            color: #007bff;
-            /* Màu tiêu đề */
+            position: relative;
+            z-index: 2;
         }
 
         .section {
+            margin-bottom: 30px;
             padding: 20px;
-            margin-bottom: 20px;
-            background-color: #fff;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .section:hover {
-            transform: translateY(-5px);
-            /* Hiệu ứng di chuyển lên khi hover */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        .section h2 {
+            color: #ff6f61;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+        }
+
+        .section p {
+            line-height: 1.6;
         }
 
         .profile-card {
-            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            background-color: #fff;
-            text-align: center;
-            position: fixed;
-            top: 20px;
-            right: 20px;
+            margin: 20px auto;
             padding: 20px;
-            z-index: 1000;
-            transform-style: preserve-3d;
-        }
-
-        .profile-card .avatar {
-            margin-bottom: 20px;
-            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s;
         }
 
-        .profile-card:hover .avatar {
-            transform: scale(1.1);
-            /* Hiệu ứng phóng to avatar khi hover */
+        .profile-card img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid #ff6f61;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+            margin-bottom: 15px;
         }
 
-        .profile-card .headings p {
-            margin: 5px 0;
-            color: #434955;
-        }
-
-        .profile-card ul {
-            list-style: none;
-            padding: 0;
+        .profile-card h3 {
             margin: 0;
+            color: #ff6f61;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
         }
 
-        .profile-card li {
-            padding: 10px;
+        .profile-card p {
+            color: #e0e0e0;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-bottom: 1.5px dotted #6c757d;
-            transition: background-color 0.3s;
+            margin: 10px 0;
         }
 
-        .profile-card li:hover {
-            background-color: #f1f1f1;
-            /* Hiệu ứng đổi màu nền khi hover */
+        .contact-item svg {
+            margin-right: 10px;
+            fill: #ff6f61;
         }
 
-        .profile-card li:last-child {
-            border-bottom: none;
-        }
-
-        .profile-card svg {
-            margin-right: 8px;
-        }
-
-        hr {
-            margin: 20px 0;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .profile-card .headings {
-            margin-bottom: 10px;
-            animation: pulse 1.5s infinite;
-            /* Áp dụng animation pulse */
+        footer {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
         }
 
         @media (max-width: 768px) {
-            .profile-card {
-                position: static;
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .content {
-                margin-right: 0;
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            h2 {
-                font-size: 1.2em;
-            }
-
-            .section {
+            .container {
                 padding: 10px;
             }
         }
     </style>
 </head>
-
 <body>
+    <header class="header">
+        <h1>Vườn mai Chín Tèo🌼</h1>
+    </header>
 
-    <div class="content-wrapper">
+    <div class="container">
         <div class="content">
-            <h1>Chào Mừng Đến Với Trang Web Cây Cảnh Của Chúng Tôi</h1>
+            <div class="section">
+                <h2>Chào Mừng</h2>
+                <p>Chào mừng đến với trang web Cây Cảnh của chúng tôi, nguồn số một của bạn cho tất cả những gì liên quan đến chăm sóc cây, mẹo làm vườn và xu hướng mới nhất trong nghệ thuật trồng cây cảnh. Chúng tôi cam kết cung cấp cho bạn những thông tin và tài nguyên tốt nhất để giúp cây của bạn phát triển, tập trung vào sự bền vững, vẻ đẹp và sự đổi mới.</p>
+            </div>
 
             <div class="section">
                 <h2>Về Chúng Tôi</h2>
-                <p>Chào mừng đến với trang web Cây Cảnh của chúng tôi, nguồn số một của bạn cho tất cả những gì liên
-                    quan đến chăm sóc cây, mẹo làm vườn và xu hướng mới nhất trong nghệ thuật trồng cây cảnh. Chúng tôi
-                    cam kết cung cấp cho bạn những thông tin và tài nguyên tốt nhất để giúp cây của bạn phát triển, tập
-                    trung vào sự bền vững, vẻ đẹp và sự đổi mới.</p>
+                <p>Chúng tôi cung cấp một loạt các cây cảnh, từ những loài phổ biến đến những loài kỳ lạ. Bộ sưu tập của chúng tôi được chọn lọc cẩn thận để đảm bảo sức khỏe và vẻ đẹp của từng cây chúng tôi cung cấp. Cho dù bạn đang tìm kiếm cây trong nhà, cây ngoài trời hay các sản phẩm đặc biệt, chúng tôi có thứ gì đó cho mọi người yêu cây.</p>
             </div>
 
             <div class="section">
                 <h2>Sứ Mệnh Của Chúng Tôi</h2>
-                <p>Sứ mệnh của chúng tôi là truyền cảm hứng và giáo dục những người yêu cây ở mọi cấp độ để tạo ra những
-                    khu vườn đẹp và bền vững. Chúng tôi mong muốn trở thành nguồn tài nguyên đáng tin cậy cho kiến thức
-                    làm vườn, cung cấp những lời khuyên chuyên gia và sản phẩm chất lượng cao để giúp bạn tạo ra ốc đảo
-                    xanh riêng của mình.</p>
+                <p>Sứ mệnh của chúng tôi là truyền cảm hứng và giáo dục những người yêu cây ở mọi cấp độ để tạo ra những khu vườn đẹp và bền vững. Chúng tôi mong muốn trở thành nguồn tài nguyên đáng tin cậy cho kiến thức làm vườn, cung cấp những lời khuyên chuyên gia và sản phẩm chất lượng cao để giúp bạn tạo ra ốc đảo xanh riêng của mình.</p>
             </div>
 
             <div class="section">
-                <h2>Bộ Sưu Tập Của Chúng Tôi</h2>
-                <p>Chúng tôi cung cấp một loạt các cây cảnh, từ những loài phổ biến đến những loài kỳ lạ. Bộ sưu tập của
-                    chúng tôi được chọn lọc cẩn thận để đảm bảo sức khỏe và vẻ đẹp của từng cây chúng tôi cung cấp. Cho
-                    dù bạn đang tìm kiếm cây trong nhà, cây ngoài trời hay các sản phẩm đặc biệt, chúng tôi có thứ gì đó
-                    cho mọi người yêu cây.</p>
+                <h2>Bộ Sưu Tập</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào, cần lời khuyên hoặc muốn chia sẻ kinh nghiệm làm vườn của riêng mình, đừng ngần ngại liên hệ với chúng tôi. Chúng tôi ở đây để giúp bạn từng bước trên hành trình làm vườn của bạn. Liên hệ với chúng tôi qua điện thoại, email hoặc ghé thăm trung tâm vườn của chúng tôi.</p>
             </div>
 
-            <div class="section">
-                <h2>Liên Hệ Với Chúng Tôi</h2>
-                <p>Nếu bạn có bất kỳ câu hỏi nào, cần lời khuyên hoặc muốn chia sẻ kinh nghiệm làm vườn của riêng mình,
-                    đừng ngần ngại liên hệ với chúng tôi. Chúng tôi ở đây để giúp bạn từng bước trên hành trình làm vườn
-                    của bạn. Liên hệ với chúng tôi qua điện thoại, email hoặc ghé thăm trung tâm vườn của chúng tôi.</p>
+            <div class="profile-card">
+                <img src="images/avatar.jpg" alt="Avatar">
+                <h3>TÂN 7 CÚ</h3>
+                <p>Nhà Phát Triển</p>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M20 15.27V17c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2v-1.73C2.9 14.9 3.8 14 5 14h12c1.2 0 2.1.9 2 2.27zm-2-2H6c-.6 0-1.1.5-1.1 1.1V17c0 .6.5 1.1 1.1 1.1h12c.6 0 1.1-.5 1.1-1.1v-1.73c0-.6-.5-1.1-1.1-1.1zm1.5-3H4.5c-.6 0-1.1.5-1.1 1.1V12c0 .6.5 1.1 1.1 1.1h15c.6 0 1.1-.5 1.1-1.1v-1.73c0-.6-.5-1.1-1.1-1.1zM21 8h-2.5c-.6 0-1.1.5-1.1 1.1V9c0 .6.5 1.1 1.1 1.1H21c.6 0 1.1-.5 1.1-1.1V9c0-.6-.5-1.1-1.1-1.1zM21 4h-2.5c-.6 0-1.1.5-1.1 1.1V5c0 .6.5 1.1 1.1 1.1H21c.6 0 1.1-.5 1.1-1.1V5c0-.6-.5-1.1-1.1-1.1zM14.5 11H9.5c-.6 0-1.1.5-1.1 1.1v1.73c0 .6.5 1.1 1.1 1.1h5c.6 0 1.1-.5 1.1-1.1V12c0-.6-.5-1.1-1.1-1.1z"/>
+                    </svg>
+                    <p>Điện thoại: 0835117727</p>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V8h12v2zm-7-4H6V5h6v2zm9 6h-6V8h6v4z"/>
+                    </svg>
+                    <p>Gmail: tranminhtan4953@gmail.com</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="profile-card">
-        <div class="avatar">
-            <svg class="size-36 border-4 border-white rounded-full" id="avatar" viewBox="0 0 61.8 61.8"
-                xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG paths and shapes for the avatar -->
-            </svg>
-        </div>
-        <div class="headings">
-            <p class="text-xl font-serif font-semibold text-[#434955]">TÂN 7 CÚ</p>
-            <p class="text-sm font-semibold text-[#434955]">NHÀ PHÁT TRIỂN</p>
-        </div>
-        <ul>
-            <li class="contact-item text-xs font-semibold text-[#434955]">
-                <svg id="phone" viewBox="0 0 24 24" class="fill-stone-700" height="15" width="15"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG path for phone icon -->
-                </svg>
-                <p>Điện thoại: 0835117727</p>
-            </li>
-            <li class="contact-item text-xs font-semibold text-[#434955]">
-                <svg class="fill-stone-700" height="15" width="15" id="mail" viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG path for mail icon -->
-                </svg>
-                <p>Gmail: tranminhtan4953@gmail.com</p>
-            </li>
-            <li class="contact-item text-xs font-semibold text-[#434955]">
-                <svg class="fill-stone-700" height="15" width="15" id="globe" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG path for globe icon -->
-                </svg>
-                <p>none</p>
-            </li>
-            <li class="contact-item text-xs font-semibold text-[#434955]">
-                <svg id="map" viewBox="0 0 16 16" class="fill-stone-700" height="15" width="15"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <!-- SVG path for map icon -->
-                </svg>
-                <p>ĐC: Ấp 9A, Mỹ Thành Nam, Cai Lậy, Tiền Giang</p>
-            </li>
-        </ul>
-        <hr class="w-full h-3 bg-[#58b0e0]">
-    </div>
-
+    <footer>
+        © 2024 Vườn mai Chín Tèo
+    </footer>
 </body>
-
 </html>
