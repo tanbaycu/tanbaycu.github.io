@@ -4,27 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trang cảm ơn với hiệu ứng trái tim bay lên liên tục khi trang tải.">
-    <meta name="keywords" content="cảm ơn, phản hồi, trang web, hiệu ứng trái tim">
+    <meta name="description" content="Trang cảm ơn với chủ đề không gian và hiệu ứng hình ảnh ấn tượng.">
+    <meta name="keywords" content="cảm ơn, phản hồi, trang web, chủ đề không gian">
     <meta name="author" content="Tên của bạn">
     <title>Lời Cảm Ơn</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
-            font-family: Arial, sans-serif;
+            background: url('https://tanbaycu.github.io/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
+            color: #ffffff;
         }
 
         .thank-you-container {
             text-align: center;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             padding: 40px;
             max-width: 90%;
             width: 100%;
@@ -33,55 +36,56 @@
         }
 
         .thank-you-container h1 {
-            color: #4CAF50;
-            font-size: 2em;
+            color: #00d4ff;
+            font-size: 2.5em;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .thank-you-container p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .thank-you-container .heart-icon {
-            color: #4CAF50;
+        .thank-you-container .star-icon {
+            color: #00d4ff;
             font-size: 4em;
             margin-bottom: 20px;
+            position: relative;
         }
 
         button {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #00d4ff;
+            color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #00b2e5;
+            transform: scale(1.05);
         }
 
         button:focus {
             outline: none;
         }
 
-        .heart-icon::before {
-            content: '';
+        .star {
             position: absolute;
-            width: 0;
-            height: 0;
             border-radius: 50%;
-            background: #ff6347;
-            /* Màu đỏ */
-            opacity: 0;
+            background-color: #ffff00;
+            opacity: 0.8;
             pointer-events: none;
-            animation: none;
+            animation: twinkle ease forwards;
         }
 
-        @keyframes fly-heart {
+        @keyframes twinkle {
             0% {
                 transform: scale(0) translateY(0);
                 opacity: 1;
@@ -99,20 +103,20 @@
             }
 
             .thank-you-container h1 {
-                font-size: 1.5em;
+                font-size: 1.8em;
             }
 
             .thank-you-container p {
                 font-size: 1em;
             }
 
-            .thank-you-container .heart-icon {
+            .thank-you-container .star-icon {
                 font-size: 3em;
             }
 
             button {
-                padding: 8px 16px;
-                font-size: 0.9em;
+                padding: 10px 20px;
+                font-size: 1em;
             }
         }
     </style>
@@ -120,8 +124,8 @@
 
 <body>
     <div class="thank-you-container">
-        <div class="heart-icon">
-            <i class="fas fa-heart"></i>
+        <div class="star-icon">
+            <i class="fas fa-star"></i>
         </div>
         <h1>Cảm ơn bạn!</h1>
         <p>Chúng tôi rất biết ơn về phản hồi của bạn. Điều này sẽ giúp chúng tôi cải thiện dịch vụ và mang đến trải
@@ -133,28 +137,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.querySelector('.thank-you-container');
 
-            function createHeart() {
-                const heart = document.createElement('div');
-                heart.style.position = 'absolute';
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.bottom = '0';
-                heart.style.width = '15px'; /* Kích thước nhỏ hơn */
-                heart.style.height = '15px'; /* Kích thước nhỏ hơn */
-                heart.style.backgroundColor = '#ff6347';
-                heart.style.borderRadius = '50%';
-                heart.style.opacity = '0.7';
-                heart.style.pointerEvents = 'none';
-                heart.style.animation = `fly-heart ${Math.random() * 3 + 2}s ease forwards`;
-                container.appendChild(heart);
+            function createStar() {
+                const star = document.createElement('div');
+                const size = Math.random() * 10 + 10; // Random size between 10px and 20px
+                star.classList.add('star');
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.bottom = '0';
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration between 2s and 5s
+                container.appendChild(star);
 
-                // Remove heart after animation ends
-                heart.addEventListener('animationend', () => {
-                    heart.remove();
+                // Remove star after animation ends
+                star.addEventListener('animationend', () => {
+                    star.remove();
                 });
             }
 
-            // Create hearts every second
-            setInterval(createHeart, 500);
+            // Create stars every 500ms
+            setInterval(createStar, 10);
         });
     </script>
 </body>
