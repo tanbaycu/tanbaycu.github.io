@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Tài Khoản</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
         body {
             background: linear-gradient(to right, #e0f7fa, #80deea);
@@ -175,6 +174,63 @@
         .popup-content p {
             color: #555;
         }
+
+        .hamburger-menu {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 1000;
+            color: #00332e;
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-options {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background-color: #004d40;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            padding: 10px;
+        }
+
+        .menu-options a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-options a:hover {
+            background-color: #00796b;
+        }
+
+
+        .back-button {
+            background-color: #004d40;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #00332e;
+        }
     </style>
 </head>
 
@@ -187,6 +243,73 @@
             <span id="headerAccountBalance">$0</span>
         </div>
     </div>
+    <!-- Nút Hamburger Menu -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        &#9776;
+    </div>
+
+    <!-- Tùy chọn Menu -->
+    <div id="menuOptions" class="menu-options" style="display: none;">
+        <a href="#" onclick="showSection('lichSuGiaoDich')">Lịch sử giao dịch</a>
+        <a href="#" onclick="showSection('thongKeGiaoDich')">Thống kê giao dịch</a>
+        <a href="#" onclick="showSection('maCoupon')">Mã coupon</a>
+    </div>
+
+    <div id="lichSuGiaoDich" class="container" style="display: none;">
+        <button class="back-button" onclick="goBack()">← Quay lại</button>
+        <h2>Lịch sử giao dịch</h2>
+        <table id="transactionHistory" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Loại giao dịch</th>
+                    <th>Số tiền</th>
+                    <th>Mô tả</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align: center;">Chưa có dữ liệu</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="thongKeGiaoDich" class="container" style="display: none;">
+        <button class="back-button" onclick="goBack()">← Quay lại</button>
+        <h2>Thống kê giao dịch</h2>
+        <div id="transactionStats">
+            <p id="totalIncome">Tổng thu nhập: Chưa có dữ liệu</p>
+            <p id="totalExpenditure">Tổng chi tiêu: Chưa có dữ liệu</p>
+            <p id="netBalance">Số dư còn lại: Chưa có dữ liệu</p>
+        </div>
+    </div>
+
+
+    <div id="maCoupon" class="container" style="display: none;">
+        <button class="back-button" onclick="goBack()">← Quay lại</button>
+        <h2>Mã Coupon</h2>
+        <table id="couponCodes" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Mã coupon</th>
+                    <th>Giá trị</th>
+                    <th>Ngày hết hạn</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align: center;">Chưa có dữ liệu</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
 
     <div class="container">
         <div class="account-info">
@@ -200,10 +323,12 @@
         <div class="contact-info">
             <h2>THÔNG TIN LIÊN HỆ</h2>
             <label for="phone">Số điện thoại:</label>
-            <input type="text" id="phone" readonly>
+            <input type="tel" id="phone" pattern="[0-9]{10}" title="Vui lòng nhập đúng số điện thoại 10 chữ số"
+                readonly>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" readonly>
+            <input type="email" id="email" title="Vui lòng nhập đúng định dạng email" readonly>
+
 
             <button id="editButton" class="edit-button" onclick="enableEditMode()">Chỉnh sửa</button>
             <button type="submit" id="saveButton" style="display: none;" class="edit-button"
@@ -214,9 +339,9 @@
     <div id="popup" class="popup">
         <div class="popup-content">
             <span id="close-btn" class="close-btn">&times;</span>
-            <h2>Xin chào!</h2>
-            <p>Chào mừng bạn đến với trang thông tin tài khoản của chúng tôi.</p>
-            <p>Nhấn vào đây để bắt đầu quản lý tài khoản của bạn.</p>
+            <h2>Update ngày 15/8</h2>
+            <p>Thêm hamburger-menu section up</p>
+            <p>dự kiến 19/8</p>
         </div>
     </div>
 
@@ -249,6 +374,11 @@
             document.getElementById('phone').removeAttribute('readonly');
             document.getElementById('email').removeAttribute('readonly');
             document.getElementById('saveButton').style.display = 'block';
+
+            // Add event listeners to validate input
+            document.getElementById('phone').addEventListener('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+            });
         }
 
         // Save edited contact information to localStorage
@@ -258,6 +388,19 @@
                 var userInfo = JSON.parse(userInfoStr);
                 var phone = document.getElementById('phone').value;
                 var email = document.getElementById('email').value;
+
+                // Validate phone number length
+                if (phone.length !== 10) {
+                    alert('Vui lòng nhập đúng số điện thoại 10 chữ số.');
+                    return;
+                }
+
+                // Validate email format
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailPattern.test(email)) {
+                    alert('Vui lòng nhập đúng định dạng email.');
+                    return;
+                }
 
                 userInfo.contactInfo = {
                     phone: phone,
@@ -276,6 +419,7 @@
                 window.location.href = 'login.html';
             }
         }
+
 
         // Show popup function
         function showPopup() {
@@ -296,6 +440,60 @@
         window.addEventListener('load', function () {
             showPopup();
         });
+
+        // Hàm để quay lại menu chính
+        function goBack() {
+            // Ẩn tất cả các phần nội dung
+            document.getElementById('lichSuGiaoDich').style.display = 'none';
+            document.getElementById('thongKeGiaoDich').style.display = 'none';
+            document.getElementById('maCoupon').style.display = 'none';
+
+            // Hiển thị lại menu
+            document.getElementById('menuOptions').style.display = 'block';
+        }
+
+        // Hàm để hiển thị phần nội dung được chọn
+        function showSection(sectionId) {
+            // Ẩn menu chính
+            document.getElementById('menuOptions').style.display = 'none';
+
+            // Hiển thị phần nội dung được chọn
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Hàm để mở và đóng menu
+        function toggleMenu() {
+            var menu = document.getElementById('menuOptions');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
+        // Đóng menu khi người dùng click bên ngoài menu
+        window.onclick = function (event) {
+            var menu = document.getElementById('menuOptions');
+            if (!event.target.matches('.hamburger-menu')) {
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                }
+            }
+        }
+        // This function will load empty data
+        function loadEmptyData() {
+            // No need to call these functions as the data is empty
+            // Just for completeness if you want to clear any data
+            document.getElementById('totalIncome').innerText = 'Tổng thu nhập: Chưa có dữ liệu';
+            document.getElementById('totalExpenditure').innerText = 'Tổng chi tiêu: Chưa có dữ liệu';
+            document.getElementById('netBalance').innerText = 'Số dư còn lại: Chưa có dữ liệu';
+        }
+
+        // Call this function to initialize with empty data
+        loadEmptyData();
+
+
+
     </script>
 </body>
 
