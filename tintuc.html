@@ -1,47 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trang tin tức nổi bật về các giống mai vàng độc lạ và dịch vụ chăm sóc cây cảnh.">
-    <meta name="keywords" content="tin tức, mai vàng, cây cảnh, chăm sóc cây, nhà vườn">
-    <meta name="author" content="Nhà vườn Chín Tèo">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="description"
+        content="Trang tin tức hiện đại và chuyên nghiệp về cây Mai Vàng và dịch vụ chăm sóc cây cảnh.">
 
-    <title>Tin tức nổi bật</title>
+    <title>Tin Tức Mai Vàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
             margin: 0;
             padding: 0;
-            background: #f5f5f5;
         }
 
+        /* Thiết kế header mới */
         header {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
             padding: 15px 0;
-            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: #2575fc;
+            /* Đổi màu khi cuộn trang */
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-left: 20px;
         }
 
         nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         nav ul {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: flex;
         }
 
@@ -52,110 +67,128 @@
         nav ul li a {
             color: #fff;
             text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 4px;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 30px;
             transition: background 0.3s, color 0.3s;
         }
 
         nav ul li a:hover {
-            background: #45a049;
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .logo {
+                margin: 0;
+            }
+        }
+
+        .hero {
+            background: url('https://tanbaycu.github.io/images/news.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-top: 10px;
         }
 
         .container {
-            margin-top: 80px;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        .news-item {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+        .card {
+            border: none;
+            border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
             transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
         }
 
-        .news-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .news-item img {
+        .card img {
             width: 100%;
             height: auto;
-            border-bottom: 2px solid #ddd;
+            transition: opacity 0.3s;
         }
 
-        .news-item .content {
+        .card-body {
             padding: 20px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid #ddd;
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #fff;
         }
 
-        .news-item .content:hover {
-            background-color: #f9f9f9;
+        .card-title {
+            font-size: 1.75em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #17a2b8;
         }
 
-        .news-item .content h2 {
-            margin-top: 0;
-            font-size: 1.8em;
-            line-height: 1.4;
-            color: #333;
-        }
-
-        .news-item .content p {
-            margin: 0;
-            line-height: 1.6;
+        .card-text {
             color: #555;
-            max-height: 100px;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
         }
 
-        .news-item.expanded .content p {
-            max-height: none;
+        .btn-primary {
+            background-color: #17a2b8;
+            border: none;
         }
 
-        .more {
-            text-align: center;
-            padding: 10px 0;
-            border-top: 2px solid #ddd;
-        }
-
-        .more a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            display: inline-block;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        .more a:hover {
-            color: #45a049;
-            background-color: #e0f2e9;
+        .btn-primary:hover {
+            background-color: #138496;
         }
 
         footer {
-            background: #4CAF50;
+            background: #343a40;
             color: #fff;
             text-align: center;
             padding: 20px;
-            position: relative;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
@@ -163,359 +196,195 @@
 <body>
     <header>
         <nav>
+            <div class="logo">Tin Tức Mai Vàng</div>
+            <div class="menu-toggle">&#9776;</div>
             <ul>
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="thong-tin-lien-he.html">Liên hệ</a></li>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="tintuc.html">Tin Tức</a></li>
+                <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                <li><a href="thong-tin-lien-he.html">Liên Hệ</a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="news-container">
-        <!-- Bài viết 1 -->
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 1">
-            <h2>Giới Thiệu Về Cây Mai Vàng</h2>
-            <p>
-                Cây mai vàng (Ochna integerrima) là một trong những loài cây cảnh nổi bật tại Việt Nam. Cây thuộc họ Ô
-                môi và thường được trồng để làm cảnh, đặc biệt trong các dịp lễ Tết. Cây mai vàng không chỉ được yêu
-                thích vì sắc vàng rực rỡ của hoa mà còn vì những giá trị văn hóa và phong thủy mà nó mang lại.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Đặc Điểm Sinh Thái</strong><br>
-                    Cây mai vàng có thể phát triển ở nhiều loại đất khác nhau nhưng thường ưu thích đất ẩm, thoát nước
-                    tốt. Cây có thể cao từ 3 đến 5 mét, với tán lá rộng và hoa nở vào dịp Tết Nguyên Đán. Lá cây có màu
-                    xanh đậm, nhẵn và hình bầu dục, trong khi hoa có màu vàng rực rỡ, thường nở đồng loạt tạo nên một
-                    cảnh sắc đẹp mắt.
+    <section class="hero">
+        <h1>Chào Mừng Đến Với Tin Tức Mai Vàng</h1>
+        <p>Nguồn tin tức mới nhất về cây Mai Vàng và mẹo chăm sóc cây cảnh.</p>
+    </section>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Lịch Sử Và Nguồn Gốc Của Cây Mai Vàng</h5>
+                <p class="card-text">
+                    Cây mai vàng, thuộc họ Ochnaceae, có nguồn gốc từ khu vực Đông Nam Á, đặc biệt là Việt Nam, Lào và
+                    Campuchia. Cây được biết đến với tên khoa học là Ochna integerrima. Trong lịch sử, cây mai vàng đã
+                    trở thành một phần không thể thiếu trong các dịp lễ hội và nghi lễ truyền thống của người dân Việt
+                    Nam. Chúng không chỉ được trồng vì vẻ đẹp nổi bật của hoa vàng rực rỡ mà còn vì ý nghĩa phong thủy
+                    và văn hóa sâu sắc. Cây mai vàng thường được trồng để chúc mừng năm mới, biểu thị sự may mắn và
+                    thịnh vượng. Nghiên cứu cho thấy rằng cây mai vàng còn được trồng để tạo ra những không gian xanh
+                    mát, đồng thời thể hiện sự tôn trọng đối với các truyền thống văn hóa của địa phương.
                 </p>
-                <p>
-                    <strong>Ý Nghĩa Trong Văn Hóa</strong><br>
-                    Cây mai vàng không chỉ đơn thuần là cây cảnh, mà còn là biểu tượng của sự may mắn và thịnh vượng
-                    trong văn hóa Việt Nam. Trong dịp Tết Nguyên Đán, cây mai vàng thường được đặt trong nhà hoặc sân
-                    vườn để mang lại sự tươi mới và năng lượng tích cực cho gia đình. Cây còn được coi là biểu tượng của
-                    sự thịnh vượng và thành công trong năm mới.
-                </p>
-                <p>
-                    <strong>Cách Chăm Sóc Cây Mai Vàng</strong><br>
-                    Để cây mai vàng phát triển khỏe mạnh, cần chú ý đến việc chăm sóc đúng cách. Cây cần được tưới nước
-                    đầy đủ nhưng không nên tưới quá nhiều để tránh tình trạng ngập úng. Việc bón phân định kỳ cũng rất
-                    quan trọng để cung cấp đầy đủ dưỡng chất cho cây. Ngoài ra, cây cũng cần được cắt tỉa thường xuyên
-                    để duy trì hình dáng đẹp và khuyến khích sự ra hoa.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 2">
-            <h2>Lịch Sử Và Nguồn Gốc Của Cây Mai Vàng</h2>
-            <p>
-                Cây mai vàng có nguồn gốc từ khu vực Đông Nam Á, đặc biệt là Việt Nam, Lào, và Campuchia. Cây đã được
-                trồng và sử dụng trong nhiều thế kỷ trong các dịp lễ hội và nghi lễ truyền thống. Trong lịch sử, cây mai
-                vàng không chỉ được yêu thích vì vẻ đẹp mà còn vì ý nghĩa phong thủy và văn hóa sâu sắc.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Nguồn Gốc Địa Lý</strong><br>
-                    Cây mai vàng chủ yếu phân bố ở khu vực nhiệt đới và cận nhiệt đới. Ở Việt Nam, cây được trồng rộng
-                    rãi ở các tỉnh miền Nam, nơi có khí hậu ấm áp và phù hợp với sự phát triển của cây. Ngoài ra, cây
-                    mai vàng cũng được trồng ở các khu vực có khí hậu tương tự ở Đông Nam Á, như Lào và Campuchia.
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Các Loại Cây Mai Vàng Thịnh Hành</h5>
+                <p class="card-text">
+                    Có nhiều giống cây mai vàng được trồng phổ biến ở khu vực Đông Nam Á, mỗi loại có những đặc điểm
+                    riêng biệt và yêu cầu chăm sóc khác nhau. Một số giống mai vàng nổi bật bao gồm mai vàng truyền
+                    thống, mai vàng đại, và mai vàng nhỏ. Mai vàng truyền thống thường có hoa to và đẹp, thích hợp với
+                    các khu vườn lớn. Mai vàng đại, hay còn gọi là mai vàng thái, có kích thước lớn hơn và khả năng
+                    thích nghi cao với điều kiện môi trường khắc nghiệt. Mai vàng nhỏ thường được trồng trong chậu để
+                    trang trí nội thất và không gian nhỏ. Mỗi loại cây đều có những yêu cầu về đất, ánh sáng và nước
+                    khác nhau, và việc hiểu rõ các đặc điểm của từng giống cây sẽ giúp bạn chăm sóc chúng tốt hơn.
                 </p>
-                <p>
-                    <strong>Vai Trò Trong Lịch Sử</strong><br>
-                    Trong lịch sử Việt Nam, cây mai vàng đã được trồng và chăm sóc như một phần của các nghi lễ truyền
-                    thống và phong tục tập quán. Cây mai vàng thường được dùng để trang trí trong các dịp lễ hội, đặc
-                    biệt là trong dịp Tết Nguyên Đán, để mang lại sự may mắn và thịnh vượng cho gia đình. Trong các nghi
-                    lễ cổ truyền, cây mai vàng thường được coi là biểu tượng của sự khởi đầu mới và hy vọng cho tương
-                    lai.
-                </p>
-                <p>
-                    <strong>Văn Hóa Và Truyền Thống</strong><br>
-                    Cây mai vàng không chỉ có giá trị thẩm mỹ mà còn mang ý nghĩa văn hóa sâu sắc. Ở Việt Nam, việc
-                    trồng cây mai vàng trong dịp Tết đã trở thành một truyền thống không thể thiếu trong các gia đình.
-                    Cây mai vàng được coi là biểu tượng của sự may mắn và thành công, và việc trang trí cây trong dịp
-                    Tết còn thể hiện lòng thành kính đối với tổ tiên và các giá trị truyền thống.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 3">
-            <h2>Các Loại Cây Mai Vàng Thịnh Hành</h2>
-            <p>
-                Cây mai vàng có nhiều giống khác nhau, mỗi giống có đặc điểm và yêu cầu chăm sóc riêng. Các loại cây mai
-                vàng thịnh hành thường được trồng vì sự đẹp mắt và khả năng thích nghi với nhiều điều kiện môi trường
-                khác nhau.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Mai Vàng Trung Bộ</strong><br>
-                    Đây là giống cây mai vàng phổ biến nhất ở miền Trung Việt Nam. Mai vàng Trung Bộ thường có kích
-                    thước nhỏ hơn so với các giống khác, với hoa nở vào dịp Tết Nguyên Đán. Cây này có khả năng chịu hạn
-                    tốt và thường được trồng trong các vườn cảnh và khu vực công cộng.
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Chăm Sóc Cây Mai Vàng Trong Mùa Mưa</h5>
+                <p class="card-text">
+                    Mùa mưa là thời điểm quan trọng trong việc chăm sóc cây mai vàng, vì độ ẩm cao và tình trạng ngập
+                    úng có thể ảnh hưởng đến sức khỏe của cây. Để cây phát triển khỏe mạnh trong mùa mưa, cần chú ý đến
+                    việc thoát nước tốt và hạn chế tình trạng ngập úng. Đảm bảo rằng đất trồng có khả năng thoát nước
+                    tốt và tránh để cây bị ướt liên tục. Cần thường xuyên kiểm tra hệ thống thoát nước và điều chỉnh nếu
+                    cần. Bên cạnh đó, việc bón phân và cung cấp dưỡng chất phù hợp cũng rất quan trọng để cây duy trì
+                    sức khỏe và phát triển mạnh mẽ trong suốt mùa mưa. Đặc biệt, hãy chú ý đến việc phòng ngừa các bệnh
+                    nấm và sâu bệnh có thể phát sinh trong điều kiện ẩm ướt.
                 </p>
-                <p>
-                    <strong>Mai Vàng Nam Bộ</strong><br>
-                    Mai vàng Nam Bộ có kích thước lớn hơn và tán lá rộng hơn so với giống mai vàng Trung Bộ. Loại cây
-                    này thường được trồng ở miền Nam Việt Nam, nơi có khí hậu ấm áp. Hoa của cây thường nở sớm hơn và
-                    kéo dài hơn, tạo nên cảnh sắc tươi mới và nổi bật trong các dịp lễ hội.
-                </p>
-                <p>
-                    <strong>Mai Vàng Đà Lạt</strong><br>
-                    Mai vàng Đà Lạt là giống cây mai vàng đặc trưng của khu vực Đà Lạt, nơi có khí hậu mát mẻ và điều
-                    kiện đất đai phù hợp với sự phát triển của cây. Giống mai vàng này có hoa lớn, màu sắc rực rỡ và
-                    thường được trồng trong các khu vườn đẹp và khu vực du lịch.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 4">
-            <h2>Chăm Sóc Cây Mai Vàng Trong Mùa Mưa</h2>
-            <p>
-                Mùa mưa là thời điểm quan trọng trong việc chăm sóc cây mai vàng để đảm bảo cây không bị ảnh hưởng bởi
-                độ ẩm cao và tình trạng ngập úng. Việc chăm sóc đúng cách trong mùa mưa sẽ giúp cây phát triển khỏe mạnh
-                và nở hoa đẹp vào mùa xuân.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Quản Lý Độ Ẩm</strong><br>
-                    Trong mùa mưa, cây mai vàng cần được quản lý độ ẩm đất một cách hợp lý. Đảm bảo rằng đất không bị
-                    ngập úng và có khả năng thoát nước tốt. Nếu cần, có thể sử dụng các hệ thống thoát nước hoặc cơi nới
-                    các khu vực trồng cây để tránh tình trạng nước đọng.
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Chọn Đất Trồng Cây Mai Vàng</h5>
+                <p class="card-text">
+                    Chọn đất trồng là một yếu tố quan trọng ảnh hưởng đến sự phát triển của cây mai vàng. Đất trồng cần
+                    phải có độ pH từ 6 đến 7, đồng thời phải thoáng khí và có khả năng thoát nước tốt. Đất nên được cải
+                    tạo bằng cách trộn thêm phân hữu cơ hoặc phân chuồng để cải thiện cấu trúc đất và cung cấp đủ dưỡng
+                    chất cho cây. Đất có tính chất nhẹ, thoáng khí giúp rễ cây dễ dàng phát triển và hấp thụ nước cũng
+                    như các chất dinh dưỡng. Tránh chọn đất có tính chất nặng hoặc dễ bị ngập úng, vì điều này có thể
+                    dẫn đến sự phát triển kém và các vấn đề về sức khỏe của cây. Thực hiện kiểm tra đất định kỳ để đảm
+                    bảo rằng các điều kiện trồng luôn ở mức tối ưu.
                 </p>
-                <p>
-                    <strong>Ngăn Ngừa Nấm Bệnh</strong><br>
-                    Mùa mưa là thời điểm thuận lợi cho sự phát triển của nấm bệnh. Cần thường xuyên kiểm tra cây để phát
-                    hiện sớm các dấu hiệu của bệnh. Sử dụng các biện pháp phòng ngừa như thuốc trừ nấm tự nhiên hoặc
-                    thuốc bảo vệ thực vật để giữ cho cây luôn khỏe mạnh.
-                </p>
-                <p>
-                    <strong>Chăm Sóc Định Kỳ</strong><br>
-                    Dù có mùa mưa, việc chăm sóc cây mai vàng vẫn cần được thực hiện định kỳ. Tưới nước đúng cách, bón
-                    phân và cắt tỉa cây để giữ cho cây luôn trong tình trạng tốt. Đặc biệt, kiểm tra các cành cây để
-                    loại bỏ các cành hỏng hoặc bị bệnh.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 5">
-            <h2>Chọn Đất Trồng Cây Mai Vàng</h2>
-            <p>
-                Đất trồng là yếu tố quan trọng ảnh hưởng đến sự phát triển của cây mai vàng. Việc chọn lựa đất trồng phù
-                hợp sẽ giúp cây phát triển khỏe mạnh và đạt được hiệu quả cao nhất trong việc nở hoa.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Loại Đất Phù Hợp</strong><br>
-                    Cây mai vàng thích hợp với đất có cấu trúc nhẹ, thoát nước tốt và có độ pH từ 5.5 đến 6.5. Đất có
-                    khả năng giữ ẩm nhưng không bị ngập úng là lý tưởng cho cây mai vàng. Đất nên được bổ sung các chất
-                    hữu cơ như phân compost để tăng cường độ tơi xốp và cung cấp dưỡng chất.
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kỹ Thuật Cắt Tỉa Cây Mai Vàng</h5>
+                <p class="card-text">
+                    Cắt tỉa cây mai vàng là một kỹ thuật quan trọng để duy trì hình dáng đẹp và khuyến khích cây ra hoa
+                    đều và đẹp. Việc cắt tỉa cần được thực hiện vào thời điểm thích hợp, thường là sau khi hoa tàn hoặc
+                    vào đầu mùa xuân trước khi cây bắt đầu ra chồi mới. Cắt tỉa nên tập trung vào việc loại bỏ các cành
+                    khô, bệnh, hoặc mọc quá dày. Ngoài ra, cắt tỉa cũng giúp điều chỉnh hình dáng của cây, tạo ra cấu
+                    trúc cân đối và thoáng đãng. Kỹ thuật cắt tỉa đúng cách không chỉ giúp cây phát triển khỏe mạnh mà
+                    còn tạo ra những bông hoa rực rỡ và đẹp mắt vào mùa xuân. Hãy chú ý đến việc sử dụng các công cụ cắt
+                    tỉa sắc bén và vệ sinh chúng để tránh lây lan bệnh tật.
                 </p>
-                <p>
-                    <strong>Chuẩn Bị Đất Trồng</strong><br>
-                    Trước khi trồng, đất cần được chuẩn bị kỹ lưỡng. Cày xới đất để phá vỡ cấu trúc đất cứng, loại bỏ cỏ
-                    dại và bổ sung các chất dinh dưỡng cần thiết. Có thể trộn đất với phân hữu cơ và phân khoáng để cung
-                    cấp đầy đủ các chất dinh dưỡng cho cây.
-                </p>
-                <p>
-                    <strong>Kiểm Tra Độ Ẩm</strong><br>
-                    Đảm bảo rằng đất trồng có độ ẩm phù hợp trước khi trồng cây mai vàng. Đất không nên quá khô hoặc quá
-                    ướt. Sử dụng các công cụ kiểm tra độ ẩm để điều chỉnh việc tưới nước và duy trì điều kiện tối ưu cho
-                    cây.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 6">
-            <h2>Kỹ Thuật Cắt Tỉa Cây Mai Vàng</h2>
-            <p>
-                Cắt tỉa cây mai vàng không chỉ giúp duy trì hình dáng đẹp mà còn khuyến khích cây ra hoa đều và đẹp. Kỹ
-                thuật cắt tỉa đúng cách giúp cây phát triển mạnh mẽ và tạo ra những bông hoa rực rỡ vào mùa xuân.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Thời Điểm Cắt Tỉa</strong><br>
-                    Thời điểm lý tưởng để cắt tỉa cây mai vàng là sau khi cây đã ra hoa. Việc cắt tỉa vào thời điểm này
-                    giúp loại bỏ các cành khô, hỏng và tạo điều kiện cho các cành mới phát triển. Cần tránh cắt tỉa quá
-                    muộn hoặc quá sớm để không ảnh hưởng đến quá trình ra hoa.
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Những Lỗi Thường Gặp Khi Chăm Sóc Cây Mai Vàng</h5>
+                <p class="card-text">
+                    Trong quá trình chăm sóc cây mai vàng, có thể gặp phải một số lỗi phổ biến như tưới nước quá nhiều
+                    hoặc quá ít, không cung cấp đủ ánh sáng, hoặc chăm sóc không đúng cách dẫn đến sự phát triển kém của
+                    cây. Một số dấu hiệu cảnh báo bao gồm lá vàng, rụng lá, và sự xuất hiện của sâu bệnh. Để khắc phục
+                    những lỗi này, cần điều chỉnh chế độ tưới nước cho phù hợp với điều kiện thời tiết và nhu cầu của
+                    cây, đảm bảo cây nhận đủ ánh sáng và không bị che khuất. Việc kiểm tra định kỳ sức khỏe của cây và
+                    thực hiện các biện pháp phòng ngừa cũng rất quan trọng. Ngoài ra, việc sử dụng phân bón đúng loại và
+                    đúng liều lượng cũng giúp cải thiện sức khỏe và sự phát triển của cây.
                 </p>
-                <p>
-                    <strong>Phương Pháp Cắt Tỉa</strong><br>
-                    Sử dụng các công cụ cắt tỉa sắc bén và sạch sẽ để tránh làm tổn thương cây. Cắt bỏ các cành khô, yếu
-                    và cành giao nhau để tạo không gian cho các cành mới phát triển. Đồng thời, nên duy trì hình dáng
-                    cân đối và hài hòa cho cây.
-                </p>
-                <p>
-                    <strong>Chăm Sóc Sau Cắt Tỉa</strong><br>
-                    Sau khi cắt tỉa, cần chăm sóc cây mai vàng để giúp cây phục hồi nhanh chóng. Tưới nước đầy đủ, bón
-                    phân và kiểm tra các dấu hiệu của bệnh tật để đảm bảo cây phát triển tốt. Việc chăm sóc đúng cách
-                    sau khi cắt tỉa sẽ giúp cây nhanh chóng hồi phục và ra hoa đẹp.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 7">
-            <h2>Những Lỗi Thường Gặp Khi Chăm Sóc Cây Mai Vàng</h2>
-            <p>
-                Trong quá trình chăm sóc cây mai vàng, có thể xảy ra một số lỗi phổ biến dẫn đến việc cây không phát
-                triển tốt hoặc gặp vấn đề về sức khỏe. Việc nhận biết và khắc phục các lỗi này kịp thời sẽ giúp cây phát
-                triển khỏe mạnh và nở hoa đẹp.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Ngập Úng</strong><br>
-                    Ngập úng là một trong những vấn đề phổ biến khi chăm sóc cây mai vàng. Điều này thường xảy ra do
-                    tưới nước quá nhiều hoặc đất không thoát nước tốt. Ngập úng có thể gây ra sự phát triển của nấm bệnh
-                    và làm hỏng rễ cây. Để khắc phục, cần điều chỉnh lượng nước tưới và đảm bảo hệ thống thoát nước tốt.
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tạo Khu Vườn Mai Vàng Đẹp Mắt</h5>
+                <p class="card-text">
+                    Việc tạo ra một khu vườn mai vàng đẹp mắt không chỉ giúp làm nổi bật vẻ đẹp của cây mà còn tạo ra
+                    một không gian sống xanh, thư giãn và dễ chịu. Khu vườn có thể được thiết kế theo nhiều phong cách
+                    khác nhau, từ phong cách truyền thống với các yếu tố văn hóa địa phương đến phong cách hiện đại với
+                    các yếu tố thiết kế sáng tạo. Sử dụng các yếu tố như đá, gạch, và các loại cây khác để tạo điểm nhấn
+                    và sự đa dạng cho khu vườn. Đảm bảo rằng khu vực trồng cây mai vàng được chăm sóc đúng cách, với hệ
+                    thống thoát nước tốt và điều kiện ánh sáng phù hợp. Bên cạnh đó, việc thêm các yếu tố trang trí như
+                    đèn chiếu sáng và đồ trang trí sẽ làm cho khu vườn trở nên sinh động và hấp dẫn hơn.
                 </p>
-                <p>
-                    <strong>Bón Phân Không Đúng Cách</strong><br>
-                    Việc bón phân không đúng cách có thể dẫn đến sự thiếu hụt hoặc dư thừa dưỡng chất, ảnh hưởng đến sự
-                    phát triển của cây. Cần bón phân theo liều lượng và loại phân phù hợp với nhu cầu của cây mai vàng.
-                    Theo dõi và điều chỉnh lượng phân bón để đảm bảo cây nhận được đầy đủ dưỡng chất cần thiết.
-                </p>
-                <p>
-                    <strong>Chăm Sóc Không Đều Đặn</strong><br>
-                    Chăm sóc không đều đặn, bao gồm việc tưới nước không thường xuyên, không bón phân đúng thời điểm
-                    hoặc không cắt tỉa cây đều có thể ảnh hưởng đến sức khỏe của cây. Để cây mai vàng phát triển khỏe
-                    mạnh, cần thực hiện các công việc chăm sóc định kỳ và đều đặn.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 8">
-            <h2>Tạo Khu Vườn Mai Vàng Đẹp Mắt</h2>
-            <p>
-                Việc tạo ra một khu vườn mai vàng đẹp mắt không chỉ giúp làm nổi bật vẻ đẹp của cây mà còn tạo ra một
-                không gian sống xanh, thư giãn và dễ chịu. Khu vườn mai vàng có thể được thiết kế theo nhiều phong cách
-                khác nhau để phù hợp với sở thích và nhu cầu của gia chủ.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Lên Kế Hoạch Thiết Kế</strong><br>
-                    Trước khi bắt đầu trồng cây mai vàng, hãy lên kế hoạch thiết kế khu vườn. Xác định các khu vực trồng
-                    cây, chọn các loại cây cảnh bổ sung và quyết định về cách bố trí các yếu tố trang trí như đá, nước
-                    và ánh sáng. Kế hoạch thiết kế nên phù hợp với diện tích và kiểu dáng của khu vườn.
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cây Mai Vàng Trong Phong Thủy</h5>
+                <p class="card-text">
+                    Trong phong thủy, cây mai vàng không chỉ là cây cảnh đẹp mà còn mang nhiều ý nghĩa phong thủy quan
+                    trọng. Cây mai vàng được coi là biểu tượng của sự thịnh vượng, may mắn và hạnh phúc. Đặt cây mai
+                    vàng trong không gian sống, đặc biệt là ở những khu vực như phòng khách hoặc bàn làm việc, có thể
+                    giúp cải thiện năng lượng và mang lại sự cân bằng cho gia đình. Cây mai vàng cũng được cho là có khả
+                    năng xua đuổi tà khí và mang lại sự an lành. Để tối ưu hóa ảnh hưởng phong thủy của cây, nên chú ý
+                    đến vị trí đặt cây theo hướng phù hợp và kết hợp với các yếu tố phong thủy khác như ánh sáng và màu
+                    sắc.
                 </p>
-                <p>
-                    <strong>Lựa Chọn Các Loại Cây Phụ</strong><br>
-                    Để làm nổi bật cây mai vàng, có thể kết hợp với các loại cây cảnh khác như cây cảnh lá màu, cây thảo
-                    mộc hoặc các loại cây có hoa khác. Sự kết hợp này giúp tạo ra một không gian xanh đa dạng và phong
-                    phú. Chọn các loại cây phụ phù hợp với điều kiện ánh sáng và đất đai trong khu vườn.
-                </p>
-                <p>
-                    <strong>Đảm Bảo Chăm Sóc Định Kỳ</strong><br>
-                    Để duy trì vẻ đẹp của khu vườn, cần chăm sóc định kỳ cho cả cây mai vàng và các cây cảnh khác. Tưới
-                    nước đều đặn, bón phân và cắt tỉa cây thường xuyên để giữ cho khu vườn luôn trong tình trạng tốt.
-                    Đồng thời, cần theo dõi các dấu hiệu của sâu bệnh và xử lý kịp thời.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
 
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 9">
-            <h2>Cây Mai Vàng Trong Phong Thủy</h2>
-            <p>
-                Cây mai vàng không chỉ là cây cảnh đẹp mà còn mang nhiều ý nghĩa phong thủy quan trọng. Trong phong
-                thủy, cây mai vàng được coi là biểu tượng của sự thịnh vượng, may mắn và hạnh phúc. Việc đặt cây mai
-                vàng đúng cách trong không gian sống có thể giúp cải thiện năng lượng và mang lại sự cân bằng cho gia
-                đình.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Ý Nghĩa Phong Thủy</strong><br>
-                    Trong phong thủy, cây mai vàng thường được coi là biểu tượng của sự phát đạt và thịnh vượng. Màu
-                    vàng của hoa tượng trưng cho sự thành công và tài lộc. Đặt cây mai vàng trong nhà hoặc khu vực làm
-                    việc có thể giúp thu hút năng lượng tích cực và tạo điều kiện thuận lợi cho sự phát triển cá nhân và
-                    tài chính.
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cây Mai Vàng Trong Nghệ Thuật Bonsai</h5>
+                <p class="card-text">
+                    Nghệ thuật bonsai là một hình thức nghệ thuật độc đáo trong việc chăm sóc và tạo hình cho cây cảnh,
+                    và cây mai vàng là một trong những ứng viên lý tưởng cho nghệ thuật này. Nghệ thuật bonsai yêu cầu
+                    sự kiên nhẫn và khéo léo để tạo ra những tác phẩm đẹp mắt và ấn tượng từ những cây cảnh nhỏ. Cây mai
+                    vàng, với hình dáng tự nhiên đẹp và khả năng thích nghi cao, rất phù hợp để thực hiện các kỹ thuật
+                    tạo hình như cắt tỉa và uốn cong. Cây mai vàng bonsai có thể trở thành điểm nhấn trong không gian
+                    nội thất hoặc sân vườn, đồng thời thể hiện sự sáng tạo và tay nghề của người chăm sóc. Để tạo ra một
+                    tác phẩm bonsai ấn tượng, cần chú ý đến việc lựa chọn cây giống phù hợp, kỹ thuật chăm sóc và tạo
+                    hình chính xác.
                 </p>
-                <p>
-                    <strong>Vị Trí Đặt Cây</strong><br>
-                    Để tối ưu hóa lợi ích phong thủy của cây mai vàng, cần chú ý đến vị trí đặt cây. Cây mai vàng nên
-                    được đặt ở các khu vực có ánh sáng tốt và gần cửa ra vào hoặc các khu vực chính trong nhà. Tránh đặt
-                    cây ở các góc tối hoặc khu vực có quá nhiều đồ đạc vì điều này có thể cản trở sự lưu thông của năng
-                    lượng.
-                </p>
-                <p>
-                    <strong>Chăm Sóc Đúng Cách</strong><br>
-                    Để cây mai vàng phát huy hết ý nghĩa phong thủy, cần chăm sóc cây đúng cách. Đảm bảo cây luôn khỏe
-                    mạnh và nở hoa đẹp. Việc chăm sóc đúng cách không chỉ giúp cây phát triển tốt mà còn duy trì sự cân
-                    bằng và hài hòa trong không gian sống.
-                </p>
+                <a href="#" class="btn btn-primary">Xem thêm</a>
             </div>
-            <a href="#" class="show-more">Xem thêm</a>
         </div>
-
-
-        <div class="news-item">
-            <img src="https://via.placeholder.com/200x100" alt="Ảnh minh họa bài báo 10">
-            <h2>Cây Mai Vàng Trong Nghệ Thuật Bonsai</h2>
-            <p>
-                Nghệ thuật bonsai là một hình thức nghệ thuật độc đáo trong việc chăm sóc và tạo hình cho cây cảnh, và
-                cây mai vàng là một trong những ứng viên lý tưởng cho nghệ thuật này. Với hình dáng đẹp và khả năng
-                thích nghi, cây mai vàng có thể được tạo hình thành các tác phẩm bonsai ấn tượng.
-            </p>
-            <div class="more-content">
-                <p>
-                    <strong>Kỹ Thuật Tạo Hình Bonsai</strong><br>
-                    Để tạo hình bonsai cho cây mai vàng, cần sử dụng các kỹ thuật cắt tỉa, uốn cành và huấn luyện cây
-                    theo hình dáng mong muốn. Sử dụng dây đồng hoặc nhôm để uốn các cành cây theo ý muốn, và cắt tỉa các
-                    cành thừa để tạo ra hình dáng cân đối. Kỹ thuật này đòi hỏi sự kiên nhẫn và khéo léo để tạo ra những
-                    tác phẩm bonsai đẹp mắt.
-                </p>
-                <p>
-                    <strong>Chăm Sóc Bonsai Mai Vàng</strong><br>
-                    Chăm sóc cây bonsai mai vàng đòi hỏi sự chú ý đặc biệt để đảm bảo cây luôn khỏe mạnh và đẹp. Cần
-                    tưới nước đều đặn nhưng không quá nhiều, bón phân phù hợp và kiểm tra sức khỏe của cây thường xuyên.
-                    Cắt tỉa và uốn cành cần được thực hiện định kỳ để duy trì hình dáng và kích thước mong muốn.
-                </p>
-                <p>
-                    <strong>Trưng Bày Bonsai</strong><br>
-                    Khi trưng bày cây bonsai mai vàng, cần chọn vị trí có ánh sáng tự nhiên và tránh đặt cây ở các khu
-                    vực có ánh sáng trực tiếp quá mạnh. Sử dụng các đế hoặc chậu bonsai đẹp để làm nổi bật tác phẩm và
-                    kết hợp với các yếu tố trang trí khác để tạo ra một không gian nghệ thuật hoàn chỉnh.
-                </p>
-            </div>
-            <a href="#" class="show-more">Xem thêm</a>
-        </div>
-
     </div>
 
 
+
     <footer>
-        <p>&copy; 2024 Nhà vườn Chín Tèo. All rights reserved.</p>
+        <p>&copy; 2024 Tin Tức Mai Vàng. Bảo lưu mọi quyền.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.querySelectorAll('.show-more').forEach(button => {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                const newsItem = this.closest('.news-item');
-                newsItem.classList.toggle('expanded');
-                this.textContent = newsItem.classList.contains('expanded') ? 'Thu gọn' : 'Xem thêm';
-            });
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                document.querySelector('header').classList.add('scrolled');
+            } else {
+                document.querySelector('header').classList.remove('scrolled');
+            }
         });
     </script>
 </body>
