@@ -10,60 +10,89 @@
     <meta name="author" content="Tân 7 Cú">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-
     <!-- Font Awesome cho các icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #f4f4f4;
+        /* Reset default browser styles */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00b4d8, #90e0ef);
+            color: #333;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
 
-        .qr-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 a {
+            text-decoration: none;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        header h1 a:hover {
+            color: #caf0f8;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        /* QR Grid */
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
-            position: relative;
-            transition: filter 0.3s, opacity 0.3s;
+            justify-items: center;
         }
 
-        .qr-container.muted {
-            filter: blur(4px);
-            opacity: 0.5;
-        }
-
-        section {
-            margin: 10px;
-            position: relative;
-            width: 100%;
-            max-width: 150px;
-            transition: transform 0.3s;
-        }
-
-        .qr-section img {
-            max-width: 100%;
-            height: auto;
+        .qr-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            text-align: center;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .qr-section img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        .qr-card img {
+            max-width: 100%;
+            border-radius: 10px;
         }
 
+        .qr-card p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0077b6;
+        }
+
+        .qr-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Popup Styles */
         .popup {
             display: none;
             position: fixed;
@@ -71,15 +100,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             width: 80%;
-            max-width: 500px;
-            opacity: 0;
+            max-width: 600px;
+            z-index: 10;
             transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
         }
 
         .popup.show {
@@ -89,18 +117,19 @@
         }
 
         .popup img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            border-radius: 10px;
             margin-bottom: 10px;
         }
 
         .popup h2 {
-            margin-top: 0;
-            font-size: 20px;
+            margin: 0;
+            font-size: 1.5rem;
+            color: #0077b6;
         }
 
         .popup a {
-            color: #007bff;
+            color: #0077b6;
             text-decoration: none;
             font-weight: bold;
         }
@@ -113,16 +142,15 @@
             position: absolute;
             top: 10px;
             right: 15px;
+            font-size: 24px;
             cursor: pointer;
             color: #333;
-            font-size: 24px;
         }
 
         .close-btn:hover {
             color: #ff0000;
         }
 
-        /* Lớp phủ mờ */
         .overlay {
             display: none;
             position: fixed;
@@ -140,74 +168,50 @@
             display: block;
             opacity: 1;
         }
-
-        /* Thêm hiệu ứng cho h1 khi hover */
-        h1 a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        h1 a:hover {
-            color: #007bff;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <a href="index.html" id="home-link">
-            <h1>Mã QR Thông Tin</h1>
-        </a>
-        <p>Nhấn vào mã QR để xem thông tin chi tiết.</p>
+        <header>
+            <h1><a href="index.html">Mã QR Thông Tin</a></h1>
+        </header>
+        <p class="description">Nhấn vào mã QR để xem thông tin chi tiết.</p>
 
-        <div class="qr-container" id="qr-container">
-            <!-- QR Liên hệ -->
-            <section id="qr-contact" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-contact.png" alt="QR Liên hệ"
-                    onclick="showPopup('popup-contact')">
-            </section>
-
-            <!-- QR Facebook -->
-            <section id="qr-facebook" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-facebook.png" alt="QR Facebook"
-                    onclick="showPopup('popup-facebook')">
-            </section>
-
-            <!-- QR Zalo -->
-            <section id="qr-zalo" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-zalo.png" alt="QR Zalo"
-                    onclick="showPopup('popup-zalo')">
-            </section>
-
-            <!-- QR YouTube -->
-            <section id="qr-youtube" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-youtube.png" alt="QR YouTube"
-                    onclick="showPopup('popup-youtube')">
-            </section>
-
-            <!-- QR GitHub -->
-            <section id="qr-github" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-github.png" alt="QR GitHub"
-                    onclick="showPopup('popup-github')">
-            </section>
-
-            <!-- QR Telegram -->
-            <section id="qr-telegram" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-telegram.png" alt="QR Telegram"
-                    onclick="showPopup('popup-telegram')">
-            </section>
-
-            <!-- QR Thanh toán -->
-            <section id="qr-payment" class="qr-section">
-                <img src="https://tanbaycu.github.io/qrboots/qr-payment.png" alt="QR Thanh toán"
-                    onclick="showPopup('popup-payment')">
-            </section>
-
-            <!-- QR Key -->
-            <section id="qr-key" class="qr-section">
-                <img src="URL_QR_KEY" alt="QR Key" onclick="showPopup('popup-key')">
-            </section>
+        <div class="qr-grid" id="qr-container">
+            <!-- QR Code Sections -->
+            <div class="qr-card" id="qr-contact" onclick="showPopup('popup-contact')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-contact.png" alt="QR Liên hệ">
+                <p>Liên hệ</p>
+            </div>
+            <div class="qr-card" id="qr-facebook" onclick="showPopup('popup-facebook')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-facebook.png" alt="QR Facebook">
+                <p>Facebook</p>
+            </div>
+            <div class="qr-card" id="qr-zalo" onclick="showPopup('popup-zalo')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-zalo.png" alt="QR Zalo">
+                <p>Zalo</p>
+            </div>
+            <div class="qr-card" id="qr-youtube" onclick="showPopup('popup-youtube')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-youtube.png" alt="QR YouTube">
+                <p>YouTube</p>
+            </div>
+            <div class="qr-card" id="qr-github" onclick="showPopup('popup-github')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-github.png" alt="QR GitHub">
+                <p>GitHub</p>
+            </div>
+            <div class="qr-card" id="qr-telegram" onclick="showPopup('popup-telegram')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-telegram.png" alt="QR Telegram">
+                <p>Telegram</p>
+            </div>
+            <div class="qr-card" id="qr-payment" onclick="showPopup('popup-payment')">
+                <img src="https://tanbaycu.github.io/qrboots/qr-payment.png" alt="QR Thanh toán">
+                <p>Thanh toán</p>
+            </div>
+            <div class="qr-card" id="qr-key" onclick="showPopup('popup-key')">
+                <img src="URL_QR_KEY" alt="QR Key">
+                <p>Key</p>
+            </div>
         </div>
 
         <!-- Popups -->
@@ -234,22 +238,22 @@
             <img src="https://tanbaycu.github.io/qrboots/qr-zalo.png" alt="QR Zalo">
             <h2>Thông tin Zalo</h2>
             <p>QR Zalo (24/6)</p>
-            <a href="zalo.app/0835117727" target="_blank">Truy cập liên kết</a>
+            <a href="zalo.app.link/qr12345" target="_blank">Truy cập liên kết</a>
         </div>
 
         <div class="popup" id="popup-youtube">
             <span class="close-btn" onclick="hidePopup()">&times;</span>
             <img src="https://tanbaycu.github.io/qrboots/qr-youtube.png" alt="QR YouTube">
             <h2>Thông tin YouTube</h2>
-            <p>Chi tiết thông tin YouTube.</p>
-            <a href="youtube.com" target="_blank">Truy cập liên kết</a>
+            <p>Khám phá các video và dự án của tôi.</p>
+            <a href="https://www.youtube.com/channel/UC1234567890" target="_blank">Truy cập liên kết</a>
         </div>
 
         <div class="popup" id="popup-github">
             <span class="close-btn" onclick="hidePopup()">&times;</span>
             <img src="https://tanbaycu.github.io/qrboots/qr-github.png" alt="QR GitHub">
             <h2>Thông tin GitHub</h2>
-            <p>Liên hệ hợp tác và phát triển.</p>
+            <p>Xem mã nguồn và các dự án của tôi trên GitHub.</p>
             <a href="https://github.com/tanbaycu" target="_blank">Truy cập liên kết</a>
         </div>
 
@@ -257,44 +261,38 @@
             <span class="close-btn" onclick="hidePopup()">&times;</span>
             <img src="https://tanbaycu.github.io/qrboots/qr-telegram.png" alt="QR Telegram">
             <h2>Thông tin Telegram</h2>
-            <p>Hỗ trợ cho trường hợp khẩn cấp không liên lạc bằng Số điện thoại hoặc Gmail (24/7).</p>
-            <a href="t.me/tanbaycu" target="_blank">Truy cập liên kết</a>
+            <p>Tham gia nhóm Telegram của tôi.</p>
+            <a href="https://t.me/tanbaycu" target="_blank">Truy cập liên kết</a>
         </div>
 
         <div class="popup" id="popup-payment">
             <span class="close-btn" onclick="hidePopup()">&times;</span>
             <img src="https://tanbaycu.github.io/qrboots/qr-payment.png" alt="QR Thanh toán">
             <h2>Thông tin Thanh toán</h2>
-            <p>Vietcombank<br>TRAN MINH TAN<br>1045864832</p>
+            <p>Sử dụng QR để thanh toán.</p>
+            <a href="https://payment-link.example.com" target="_blank">Truy cập liên kết</a>
         </div>
 
         <div class="popup" id="popup-key">
             <span class="close-btn" onclick="hidePopup()">&times;</span>
             <img src="URL_QR_KEY" alt="QR Key">
             <h2>Thông tin Key</h2>
-            <p>Tài của bản không trợ KEY cho nhà phát triển.</p>
+            <p>Thông tin khóa.</p>
+            <a href="https://key-info.example.com" target="_blank">Truy cập liên kết</a>
         </div>
     </div>
 
     <script>
         function showPopup(popupId) {
-            // Làm mờ tất cả các QR khác
             document.getElementById('qr-container').classList.add('muted');
-
-            // Hiển thị lớp phủ
             document.getElementById('overlay').classList.add('show');
-
-            // Hiển thị popup
             document.getElementById(popupId).classList.add('show');
         }
 
         function hidePopup() {
-            // Ẩn lớp phủ và popup
             document.getElementById('overlay').classList.remove('show');
             var popups = document.querySelectorAll('.popup');
             popups.forEach(popup => popup.classList.remove('show'));
-
-            // Khôi phục hiệu ứng làm mờ cho các mã QR
             document.getElementById('qr-container').classList.remove('muted');
         }
     </script>
