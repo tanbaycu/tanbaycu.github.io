@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài khoản</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a2c2e6, #6d74e4);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 700;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        td:hover {
+            background-color: #e9eff1;
+        }
+
+        .actions button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .actions button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .actions button:active {
+            transform: scale(0.95);
+        }
+
+        .no-data {
+            color: #888;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                box-shadow: none;
+            }
+
+            th,
+            td {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .actions button {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quản lý tài khoản</h1>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Mật khẩu</th>
+                    <th>Số dư tài khoản</th>
+                    <th>Số dư Acoin</th>
+                    <th>Số dư khuyến mãi</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="userList">
+                <tr>
+                    <td colspan="6" class="no-data">Không có dữ liệu người dùng.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            displayUserList();
+        });
+
+        function displayUserList() {
+            var userListTbody = document.getElementById('userList');
+            userListTbody.innerHTML = '';
+
+            var hasUsers = false;
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key !== 'userInfo') {
+                    var userInfoStr = localStorage.getItem(key);
+                    var userInfo = JSON.parse(userInfoStr);
+
+                    var statusText = userInfo.status === 'suspended' ? ' (Đã tạm dừng)' : '';
+
+                    var row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${userInfo.username} ${statusText}</td>
+                        <td>${userInfo.password}</td>
+                        <td>${userInfo.accountBalance} VNĐ</td>
+                        <td>${userInfo.acoinBalance} Acoin</td>
+                        <td>${userInfo.promoBalance} VNĐ</td>
+                        <td class="actions">
+                            <button onclick="deleteUser('${userInfo.username}')">Xóa</button>
+                            <button onclick="suspendUser('${userInfo.username}')">Tạm dừng</button>
+                        </td>
+                    `;
+                    userListTbody.appendChild(row);
+                    hasUsers = true;
+                }
+            }
+
+            if (!hasUsers) {
+                userListTbody.innerHTML = '<tr><td colspan="6" class="no-data">Không có dữ liệu người dùng.</td></tr>';
+            }
+        }
+
+        function deleteUser(username) {
+            if (confirm(`Bạn có chắc chắn muốn xóa tài khoản '${username}' không?`)) {
+                localStorage.removeItem(username);
+                alert(`Đã xóa tài khoản '${username}' thành công.`);
+                displayUserList();
+            }
+        }
+
+        function suspendUser(username) {
+            if (confirm(`Bạn có chắc chắn muốn tạm dừng tài khoản '${username}' không?`)) {
+                var userInfoStr = localStorage.getItem(username);
+                if (userInfoStr) {
+                    var userInfo = JSON.parse(userInfoStr);
+                    userInfo.status = 'suspended';
+                    localStorage.setItem(username, JSON.stringify(userInfo));
+                    alert(`Đã tạm dừng tài khoản '${username}' thành công.`);
+                    displayUserList();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

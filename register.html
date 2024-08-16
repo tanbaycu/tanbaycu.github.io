@@ -202,13 +202,14 @@
                 return;
             }
 
+            // Lưu thông tin người dùng vào localStorage
             var userInfo = {
                 id: generateUserId(),
                 username: username,
                 password: password,
-                accountBalance: 0,
-                acoinBalance: 0,
-                promoBalance: 0
+                accountBalance: 0,   // Số dư tài khoản
+                acoinBalance: 0,     // Số dư Acoin
+                promoBalance: 0      // Số dư khuyến mãi
             };
             localStorage.setItem(username, JSON.stringify(userInfo));
 
@@ -223,6 +224,7 @@
             return password.length >= 6;
         }
     </script>
+
 </body>
 
 </html>
